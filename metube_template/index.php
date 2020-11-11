@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
 			}
 			else if($check==0){
 				$_SESSION['username']=$_POST['username']; //Set the $_SESSION['username']
-				header('Location: browse.php');
+				header('Location: home.php');
 			}		
 		}
 }
