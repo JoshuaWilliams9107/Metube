@@ -19,6 +19,25 @@ function user_pass_check($username, $password)
 			return 0; //Checked.
 	}	
 }
+function addUserToDatabase($username, $password, $email)
+{
+	$query = "select * from account where username='$username'";
+	$result = mysql_query( $query );
+	if(mysql_num_rows($result) != 0){
+		return 1; //Username already exists in database
+	}
+
+	$query = "INSERT INTO account (username,password,email) VALUES ('$username','$password','$email')";
+	$result = mysql_query( $query );
+		
+	if (!$result)
+	{
+	   die ("addUserToDatabase() failed. Could not query the database: <br />". mysql_error());
+	}
+	else{
+		return 0; //Successfully added user
+	}	
+}
 
 function updateMediaTime($mediaid)
 {

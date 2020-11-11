@@ -4,12 +4,13 @@
 	background:#FF9900;
 	color:#FFFFFF;
 	font-weight:bold;
-	margin-right:60%;
+	margin: auto;
+	text-align: center
 }
 
 #upload_result{
 	background:#CC3300;
 	color:#FFFFFF;
 	font-weight:bold;
-	margin-right:60%;
+	margin: auto;
 }

@@ -26,23 +26,16 @@ if(isset($_POST['submit'])) {
 
  
 ?>
+	<center style="padding-top: 150px">
+	<p>Welcome to Metube, Plase login</p>
+	<p>Don't have an account? <a href="/signup.php">Signup</a></p>
 	<form method="post" action="<?php echo "index.php"; ?>">
-
-	<table width="100%">
-		<tr>
-			<td  width="20%">Username:</td>
-			<td width="80%"><input class="text"  type="text" name="username"><br /></td>
-		</tr>
-		<tr>
-			<td  width="20%">Password:</td>
-			<td width="80%"><input class="text"  type="password" name="password"><br /></td>
-		</tr>
-		<tr>
-        
-			<td><input name="submit" type="submit" value="Login"><input name="reset" type="reset" value="Reset"><br /></td>
-		</tr>
-	</table>
+		<input class="text"  type="text" name="username" placeholder="Username"><br>
+		<input class="text"  type="password" name="password" placeHolder="Password"><br>
+		<input name="submit" type="submit" value="Login"><br>
+		<input name="reset" type="reset" value="Reset"><br>
 	</form>
+	</center>
 
 <?php
   if(isset($login_error))
