@@ -45,12 +45,9 @@ if(!file_exists($dirfile))
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
 					
-					$stmt = $conn->prepare('INSERT INTO media (category) VALUES(?)');
-					if ($stmt) {
-					    $category = $_POST['category'];
-						$stmt->bind_param('s', $category);
-    						$stmt->execute();
-					}
+					$insert = "INSERT INTO media (category) VALUES($_POST['category'])";
+					$queryresult = mysql_query($insert);
+					
 					$result="0";
 					
 					$mediaid = mysql_insert_id();
