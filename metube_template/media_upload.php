@@ -21,7 +21,7 @@ session_start();
   <select id="category" name="category">
     <option value="Sports">Sports</option>
     <option value="Education">Education</option>
-    <option value="Video Games" selected>Video Games</option>
+    <option value="Video Games">Video Games</option>
     <option value="Vlogs">Vlogs</option>
     <option value="Podcasts">Podcasts</option>
     <option value="Entertainment">Entertainment</option>
