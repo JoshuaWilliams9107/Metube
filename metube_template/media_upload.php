@@ -17,7 +17,7 @@ session_start();
    Add a Media: <label style="color:#663399"><em> (Each file limit 1G)</em></label><br/>
    <input  name="file" type="file" size="50" />
 
-<label for="category">Choose a category:</label>
+<label for="category" method="post">Choose a category:</label>
   <select id="category" name="category">
     <option value="Sports" selected>Sports</option>
     <option value="Education">Education</option>
