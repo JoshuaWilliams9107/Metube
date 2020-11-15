@@ -19,7 +19,7 @@ session_start();
 
 <label for="category">Choose a category:</label>
   <select id="category" name="category">
-    <option value="Sports">Sports</option>
+    <option value="Sports" selected>Sports</option>
     <option value="Education">Education</option>
     <option value="Video Games">Video Games</option>
     <option value="Vlogs">Vlogs</option>
