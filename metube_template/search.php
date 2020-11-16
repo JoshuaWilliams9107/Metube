@@ -3,7 +3,7 @@ session_start();
 include_once "function.php";
 
 if(isset($_GET['keywords'])){
-    $keywords = $db->escape_string($_GET['keywords']);
+    $keywords = $db->real_escape_string($_GET['keywords']);
 
     $query = $db->query("
         SELECT filename
