@@ -12,7 +12,7 @@ if(isset($_GET['keywords'])){
     ");
     ?>
     <div class="num_results">
-        Found <?php mysql_num_rows($query); ?> results.
+        Found <?php echo mysql_num_rows($query); ?> results.
     </div>
 
     <?php
