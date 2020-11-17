@@ -20,7 +20,7 @@ if(isset($_GET['keywords'])){
         while($r = mysql_fetch_object($queue)){
         ?>
             <div class="result">
-                <a href="#"><?php echo r->filename; ?> </a>     
+                <a href="#"><?php echo $r->filename; ?> </a>     
             </div>
         }
     }
