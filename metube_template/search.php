@@ -17,7 +17,7 @@ if(isset($_GET['keywords'])){
 
     <?php
     if(mysql_num_rows($query)){
-        while($r = mysql_fetch_object($queue)){
+        while($r = mysql_fetch_object($query)){
         ?>
             <div class="result">
                 <a href="#"><?php echo $r->filename; ?> </a>     
