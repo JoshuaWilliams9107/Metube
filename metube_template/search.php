@@ -16,4 +16,12 @@ if(isset($_GET['keywords'])){
     </div>
 
     <?php
+    if(mysql_num_rows($query)){
+        while($r = mysql_fetch_object($queue)){
+        ?>
+            <div class="result">
+                <a href="#"><?php echo r->filename; ?> </a>     
+            </div>
+        }
+    }
 }
