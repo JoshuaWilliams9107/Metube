@@ -22,6 +22,7 @@ if(isset($_GET['keywords'])){
             <div class="result">
                 <a href="#"><?php echo $r->filename; ?> </a>     
             </div>
+            <?php
         }
     }
 }
