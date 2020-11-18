@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "function.php";
+<link rel="stylessheet" href="css/bootstrap-4.5.3-dist/css/bootstrap.css">
 
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);

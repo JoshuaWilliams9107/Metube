@@ -9,6 +9,7 @@
 <title>Media</title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<link rel="stylessheet" href="css/bootstrap-4.5.3-dist/css/bootstrap.css">
 </head>
 
 <body>

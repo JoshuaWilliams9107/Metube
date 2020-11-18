@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Media browse</title>
 <link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylessheet" href="css/bootstrap-4.5.3-dist/css/bootstrap.css">
 <script type="text/javascript" src="js/jquery-latest.pack.js"></script>
 <script type="text/javascript">
 function saveDownload(id)

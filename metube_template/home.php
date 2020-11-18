@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylessheet" href="css/bootstrap-4.5.3-dist/css/bootstrap.css">
 <?php
 session_start();
 
