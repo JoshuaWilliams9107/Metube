@@ -36,7 +36,7 @@ if(isset($_GET['id'])) {
 	<p>Viewing Video:<?php echo $result_row[2].$result_row[1];?></p>
 
      <video width="440" height="360" controls>
-     <source src="<?php echo $result_row[2].$result_row[1]; ?>" type="video/mp4">
+     <source src="<?php "' $result_row[2].$result_row[1]; '" ?>" type="video/mp4">
 Your browser does not support the video tag.
 </video> 
             <!--
