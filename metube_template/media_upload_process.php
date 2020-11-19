@@ -38,6 +38,7 @@ if(!file_exists($dirfile))
 				}
 				else /*Successfully upload file*/
 				{
+                    chmod($dirfile, 0644);
 					//insert into media table
 					$insert = "insert into media(
 							  mediaid, filename,filepath,type,category)".
