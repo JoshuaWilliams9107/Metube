@@ -20,6 +20,7 @@ $dirfile = mysql_query($getDirectory);
 $downfile = $dirfile.urlencode($_FILE["file"]["name"]);
 $file = $downfile;
 
+/*
 if (file_exists($file)) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/force-download');
@@ -33,7 +34,7 @@ if (file_exists($file)) {
     flush();
     readfile($name); //showing the path to the server where the file is to be download
     exit;
-}	
+}
+ */
 ?>
-
 
