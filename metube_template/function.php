@@ -52,7 +52,6 @@ function sendFriendRequest($recipient)
 	}
 
 	$existsTest = mysql_query("SELECT * FROM contacts WHERE sender='".$_SESSION['username']."' and recipient='$recipient'");
-	echo "SELECT * FROM contacts WHERE sender='".$_SESSION['username']."' and recipient='$recipient'";
 	echo mysql_num_rows($existsTest);
 	if(mysql_num_rows($existsTest) != 0){
 		return 2; //Friend request already sent
@@ -74,7 +73,7 @@ function sendFriendRequest($recipient)
 	}	
 }
 function getContacts(){
-	$result = mysql_query("SELECT * FROM contacts where sender='".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
+	$result = mysql_query("SELECT * FROM contacts where sender=a'".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
 	if(mysql_num_rows($result) > 0 ){
 		return fetchAllRows($result);
 	}else{
