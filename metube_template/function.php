@@ -73,7 +73,7 @@ function sendFriendRequest($recipient)
 	}	
 }
 function getContacts(){
-	$result = mysql_query("SELECT * FROM contacts where sender=a'".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
+	$result = mysql_query("SELECT * FROM contacts where sender='".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
 	if(mysql_num_rows($result) > 0 ){
 		return fetchAllRows($result);
 	}else{
