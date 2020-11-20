@@ -15,6 +15,7 @@ $username=$_SESSION['username'];
 if(!file_exists('uploads/'))
 	mkdir('uploads/', 0744);
 $dirfile = 'uploads/'.$username.'/';
+chmod($dirfile, 0755);
 if(!file_exists($dirfile))
 	mkdir($dirfile, 0744);
 
@@ -38,7 +39,7 @@ if(!file_exists($dirfile))
 				}
 				else /*Successfully upload file*/
 				{
-                    chmod($upfile, 0644);
+                    			chmod($upfile, 0644);
 					//insert into media table
 					$insert = "insert into media(
 							  mediaid, filename,filepath,type,category)".
