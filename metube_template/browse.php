@@ -66,7 +66,7 @@ function saveDownload(id)
             </td>
             <td>
                 <!-- <a href="<?php echo $result_row[2].$result_row[1];?>" target="_blank" onclick="javascript:saveDownload(<?php echo $result_row[0];?>);">Download</a> -->
-                <a href="<?php echo $result_row[2].result_row[1];?>" download> Download </a>
+                <a href="<?php echo $result_row[2].$result_row[1];?>" download> Download </a>
             </td>
 		</tr>
         <?php
