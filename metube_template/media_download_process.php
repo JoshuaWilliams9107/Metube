@@ -28,6 +28,7 @@ if (file_exists($file)) {
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file));
+    flush(); // Flush system output buffer
     readfile($file);
     exit;
 }	
