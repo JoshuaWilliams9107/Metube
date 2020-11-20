@@ -6,12 +6,12 @@ include_once "function.php";
 
 if(isset($_POST['submit'])) {
 
-		 if($_POST['username'] == "" || $_POST['password'] == "" || $_POST['passwordC'] == "" || $_POST['email'] == "") {
+		 if($_POST['username'] == "" || $_POST['password'] == "" || $_POST['passwordC'] == "" || $_POST['email'] == "" || $_POST['firstName'] == "" || $_POST['lastName'] == "") {
 		 	$signup_error = "One or more fields are missing.";
 		 }else if($_POST['password'] != $_POST['passwordC']){
 		 	$signup_error = "Password and confirm password do not match.";
 		 }else {
-		 	$check = addUserToDatabase($_POST['username'],$_POST['password'],$_POST['email']); // Call functions from function.php
+		 	$check = addUserToDatabase($_POST['username'],$_POST['password'],$_POST['email'],$_POST['firstName'],$_POST['lastName']); // Call functions from function.php
 		 	if($check == 1) {
 		 		$signup_error = "Username already exists in database";
 		 	}
@@ -28,6 +28,8 @@ if(isset($_POST['submit'])) {
 	<p>Please create an account</p>
 	<p>Already have an account? <a href="/">Sign in</a></p>
 	<form method="post" action="<?php echo "signup.php"; ?>">
+		<input class="text"  type="text" name="firstName" placeholder="First Name"><br>
+		<input class="text"  type="text" name="lastName" placeholder="Last Name"><br>
 		<input class="text"  type="text" name="username" placeholder="Username"><br>
 		<input class="text"  type="text" name="email" placeholder="Email Address"><br>
 		<input class="text"  type="password" name="password" placeHolder="Password"><br>
