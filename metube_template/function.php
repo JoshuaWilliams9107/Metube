@@ -19,7 +19,7 @@ function user_pass_check($username, $password)
 			return 0; //Checked.
 	}	
 }
-function addUserToDatabase($username, $password, $email)
+function addUserToDatabase($username, $password, $email, $firstName, $lastName)
 {
 	$query = "select * from account where username='$username'";
 	$result = mysql_query( $query );
@@ -27,7 +27,7 @@ function addUserToDatabase($username, $password, $email)
 		return 1; //Username already exists in database
 	}
 
-	$query = "INSERT INTO account (username,password,email) VALUES ('$username','$password','$email')";
+	$query = "INSERT INTO account (username,password,email,firstName,lastName) VALUES ('$username','$password','$email','$firstName','$lastName')";
 	$result = mysql_query( $query );
 		
 	if (!$result)
@@ -38,7 +38,56 @@ function addUserToDatabase($username, $password, $email)
 		return 0; //Successfully added user
 	}	
 }
+function getUser($username){
+	$result = mysql_query("SELECT * FROM account where username='$username'");
+	$returnVal = mysql_fetch_row($result);
+	return $returnVal;
+}
+function sendFriendRequest($recipient)
+{
+	$recipientUser = getUser($recipient);
+	if(!$recipientUser){
+		//1 = user does not exist
+		return 1;
+	}
 
+	$existsTest = mysql_query("SELECT * FROM contacts WHERE sender='".$_SESSION['username']."' and recipient='$recipient'");
+	echo mysql_num_rows($existsTest);
+	if(mysql_num_rows($existsTest) != 0){
+		return 2; //Friend request already sent
+	}
+	$existsTest2 = mysql_query("SELECT * FROM contacts WHERE sender='$recipient' and recipient='".$_SESSION['username']."'");
+	if(mysql_num_rows($existsTest2) != 0){
+		return 2; //Friend request already sent
+	}
+
+	//0 is pending 1 is complete
+	$query = "INSERT INTO contacts (sender,recipient,status) VALUES ('".$_SESSION['username']."','$recipient',0)";
+	$result = mysql_query( $query );	
+	if (!$result)
+	{
+	   die ("sendFriendRequest() failed. Could not query the database: <br />". mysql_error());
+	}
+	else{
+		return 0; //Successfully added user
+	}	
+}
+function getContacts(){
+	$result = mysql_query("SELECT * FROM contacts where sender='".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
+	if(mysql_num_rows($result) > 0 ){
+		return fetchAllRows($result);
+	}else{
+		return null;
+	}
+}
+function fetchAllRows($result){
+	if(mysql_num_rows($result) > 0 ){
+		while($row = mysql_fetch_array($result)){
+			  $dataArray[] = $row;
+		}
+	} 
+	return $dataArray;
+}
 function updateMediaTime($mediaid)
 {
 	$query = "	update  media set lastaccesstime=NOW()
