@@ -51,7 +51,7 @@ if(!file_exists($dirfile))
 					
 					$mediaid = mysql_insert_id();
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){
-                        $insertMK = "INSERT into media_to_keywords(media_id, keywords_id) VALUES('$mediaid', NULL)";
+                        $insertMK = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', NULL)";
                         $queryresult = mysql_query($insertMK) 
                             or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
 
@@ -59,7 +59,7 @@ if(!file_exists($dirfile))
                         $keywords = explode(' ', $_POST['keywords']);//TODO check for mysql injections
                         echo '<p>' .$keywords. '</p>';
                         foreach($keywords as $keyword){
-                            $insertK = "INSERT into keyword_table(keywords_id, keywords) VALUES('$keywordsid', $keyword)";
+                            $insertK = "INSERT into keyword_table(keyword_id, keywords) VALUES('$keywordsid', $keyword)";
                             $queryresult = mysql_query($insertK);
                         }
                     }
