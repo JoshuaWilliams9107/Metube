@@ -50,8 +50,7 @@ if(!file_exists($dirfile))
 					$result="0";
 					
 					$mediaid = mysql_insert_id();
-
-                    if(count($_GET['keywords']) >= 1){
+                    if(isset($_GET['keywords']) && !empty($_GET['keywords'])){
                         $insertMK = "INSERT into media_to_keywords(media_id, keywords_id) VALUES('$mediaid', NULL)";
                         $queryresult = mysql_query($insertMK) 
                             or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
@@ -64,6 +63,13 @@ if(!file_exists($dirfile))
                             $queryresult = mysql_query($insertK);
                         }
                     }
+                    elseif(isset($_GET['keywords'])){
+                        echo "keywords is empty"
+                    }
+                    else{
+                        echo "keywords is not set"
+                    }
+
 					//insert into upload table
 					$insertUpload="insert into upload(uploadid,username,mediaid) values(NULL,'$username','$mediaid')";
 					$queryresult = mysql_query($insertUpload)
