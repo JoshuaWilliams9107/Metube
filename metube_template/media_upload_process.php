@@ -57,7 +57,7 @@ if(!file_exists($dirfile))
                             or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
 
                         $keywordsid = mysql_insert_id();
-                        $keywords = explode(' ', _GET['keywords']);//TODO check for mysql injections
+                        $keywords = explode(' ', $_GET['keywords']);//TODO check for mysql injections
 
                         foreach($keywords as $keyword){
                             $insertK = "INSERT into keyword_table(keywords_id, keywords) VALUES('$keywordsid', $keyword)";
