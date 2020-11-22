@@ -58,7 +58,7 @@ if(!file_exists($dirfile))
 
                         $keywordsid = mysql_insert_id();
                         $keywords = explode(' ', $_GET['keywords']);//TODO check for mysql injections
-
+                        echo '<p>' .$keywords. '</p>';
                         foreach($keywords as $keyword){
                             $insertK = "INSERT into keyword_table(keywords_id, keywords) VALUES('$keywordsid', $keyword)";
                             $queryresult = mysql_query($insertK);
