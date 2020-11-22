@@ -64,10 +64,10 @@ if(!file_exists($dirfile))
                         }
                     }
                     elseif(isset($_GET['keywords'])){
-                        echo "keywords is empty"
+                        echo "keywords is empty";
                     }
                     else{
-                        echo "keywords is not set"
+                        echo "keywords is not set";
                     }
 
 					//insert into upload table
