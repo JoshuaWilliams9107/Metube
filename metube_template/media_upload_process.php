@@ -45,10 +45,24 @@ if(!file_exists($dirfile))
 							  "values(NULL,'". urlencode($_FILES["file"]["name"])."','$dirfile','".$_FILES["file"]["type"]."','".$_POST['category']."')";
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
-					
+
 					$result="0";
 					
 					$mediaid = mysql_insert_id();
+
+                    if(count($_GET['keywords']) >= 1){
+                        $insertMK = "INSERT into media_to_keywords(media_id, keywords_id) VALUES('$mediaid', NULL)";
+                        $queryresult = mysql_query($insertMK) 
+                            or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
+
+                        $keywordsid = mysql_insert_id();
+                        $keywords = explode(' ', _GET['keywords']);//TODO check for mysql injections
+
+                        foreach($keywords as $keyword){
+                            $insertK = "INSERT into keyword_table(keywords_id, keywords) VALUES('$keywordsid', $keyword)";
+                            $queryresult = mysql_query($insertK);
+                        }
+                    }
 					//insert into upload table
 					$insertUpload="insert into upload(uploadid,username,mediaid) values(NULL,'$username','$mediaid')";
 					$queryresult = mysql_query($insertUpload)

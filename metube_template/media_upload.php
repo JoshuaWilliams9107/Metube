@@ -28,6 +28,13 @@ session_start();
     <option value="Entertainment">Entertainment</option>
     <option value="Others">Others</option>
   </select>
+
+    <br>
+
+<label for="keywords" method="get">Enter video keywords:</label>
+
+<textarea id="keywords" name="keywords" rows="4" cols="50" placeholder="Seperated by space -> Ex. funny educational video_game">
+</textarea>
   
 	<input value="Upload" name="submit" type="submit" />
   </p>
