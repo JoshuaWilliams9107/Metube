@@ -31,7 +31,7 @@ session_start();
 
     <br>
 
-<label for="keywords" method="get">Enter video keywords:</label>
+<label for="keywords" method="post">Enter video keywords:</label> <!-- TODO: Need to make it GET eventually -->
 
 <textarea id="keywords" name="keywords" rows="4" cols="50" placeholder="Seperated by space -> Ex. funny educational video_game">
 </textarea>
