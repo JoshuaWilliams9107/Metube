@@ -58,7 +58,7 @@ if(!file_exists($dirfile))
                         $check = "SELECT * FROM keyword_table WHERE keyword = ".$_POST['keywords']."";
                         $result = mysql_query($check);
                         if($data = mysql_fetch_array($result, MYSQL_NUM)){
-                            $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $_POST['keywords']";
+                            $add = "SELECT keyword_id FROM keyword_table WHERE keyword = ".$_POST['keywords']"";
                             $word_id = mysql_query($add);
                             $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
                             $queryresult = mysql_query($insertMKR) 
