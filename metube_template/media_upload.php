@@ -19,14 +19,20 @@ session_start();
    <input  name="file" type="file" size="50" />
 
 <br>
+<br>
 
 <label for"title">Title:</label><br>
 <input type="text" id="title" name="title"><br>
+
+<br>
+
 <label for "thumbnail">Thumbnail:</label><br>
 <input type="file" id="thumbnail" name="thumbnail" size="50"><br>
 
+<br>
+
 <label for="description">Description:</label><br>
-<textarea type="text" id="description" name="description"></textarea><br>
+<textarea type="text" id="description" name="description"></textarea>
 
 <label for="category" method="post">Choose a category:</label>
   <select id="category" name="category">
