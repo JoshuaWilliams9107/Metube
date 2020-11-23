@@ -55,7 +55,7 @@ if(!file_exists($dirfile))
 
                     //insert and check keywords and keywords relation tables
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){    
-                        $check = "SELECT * FROM keyword_table WHERE keyword = '$_POST['keywords']'";
+                        $check = "SELECT * FROM keyword_table WHERE keyword = "$_POST['keywords']"";
                         $result = mysql_query($check);
                         if($data = mysql_fetch_array($result, MYSQL_NUM)){
                             $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $_POST['keywords']";
