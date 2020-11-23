@@ -54,11 +54,13 @@ if(!file_exists($dirfile))
                     $mediaid = mysql_insert_id();
 
                     //insert and check keywords and keywords relation tables
+                    $checker = false;
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){    
                         foreach($_POST['keywords'] as $word){
                             $check = "SELECT * FROM keyword_table WHERE keyword = $word";
                             $result = mysql_query($check);
                             if($data = mysql_fetch_array($result, MYSQL_NUM)){
+                                checker = true;
                                 $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $word";
                                 $word_id = mysql_query($add);
                                 $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
@@ -70,6 +72,9 @@ if(!file_exists($dirfile))
                             $insertMK = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', NULL)";
                             $queryresult = mysql_query($insertMK) 
                                 or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
+
+
+                            //TODO Need to restructure keywords for all of it to work with the for each loop
 
                             $keywordsid = mysql_insert_id();
                             $keywords = explode(' ', $_POST['keywords']);//TODO check for mysql injections
