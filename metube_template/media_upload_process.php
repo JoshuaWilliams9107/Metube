@@ -55,14 +55,16 @@ if(!file_exists($dirfile))
 
                     //insert and check keywords and keywords relation tables
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){    
-                        $check = "SELECT * FROM keyword_table WHERE keyword = ".$_POST['keywords']."";
-                        $result = mysql_query($check);
-                        if($data = mysql_fetch_array($result, MYSQL_NUM)){
-                            $add = "SELECT keyword_id FROM keyword_table WHERE keyword = ".$_POST['keywords']"";
-                            $word_id = mysql_query($add);
-                            $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
-                            $queryresult = mysql_query($insertMKR) 
-                                or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
+                        foreach($_POST['keywords'] as $word){
+                            $check = "SELECT * FROM keyword_table WHERE keyword = $word";
+                            $result = mysql_query($check);
+                            if($data = mysql_fetch_array($result, MYSQL_NUM)){
+                                $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $word";
+                                $word_id = mysql_query($add);
+                                $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
+                                $queryresult = mysql_query($insertMKR) 
+                                    or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
+                            }
                         }
                         else{    
                             $insertMK = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', NULL)";
