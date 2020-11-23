@@ -25,10 +25,10 @@ session_start();
 <input type="text" id="title" name="title"><br>
 
 <br>
-
+<!-- 
 <label for "thumbnail">Thumbnail:</label><br>
 <input type="file" id="thumbnail" name="thumbnail" size="50"><br>
-
+-->
 <br>
 
 <label for="description">Description:</label><br>
@@ -46,12 +46,13 @@ session_start();
   </select>
 
     <br>
+    <br>
 
 <label for="keywords" method="post">Enter video keywords:</label> <!-- TODO: Need to make it GET eventually -->
-
 <textarea id="keywords" name="keywords" rows="4" cols="50" placeholder="Seperated by space -> Ex. funny educational video_game">
 </textarea>
-  
+
+    <br>
 	<input value="Upload" name="submit" type="submit" />
   </p>
  
