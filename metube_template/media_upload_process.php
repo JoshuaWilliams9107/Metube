@@ -78,7 +78,7 @@ if(!file_exists($dirfile))
                                 //TODO Need to restructure keywords for all of it to work with the for each loop
 
                                 $keywordsid = mysql_insert_id();
-                                $insertK = "INSERT into keyword_table(Number, keyword_id, keyword) VALUES(NULL, '$keywordsid', '$word')";
+                                $insertK = "INSERT into keyword_table(keyword_id, keyword) VALUES('$keywordsid', '$word')";
                                 $queryresult = mysql_query($insertK)
                                     or die("Insert into keyword_table in media_upload_process.php" .mysql_error());
                             }
