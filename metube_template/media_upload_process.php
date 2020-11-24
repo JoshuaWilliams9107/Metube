@@ -70,17 +70,19 @@ if(!file_exists($dirfile))
                                     or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
                             }
                             else{    
-                                $insertMK = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', NULL)";
+                                $insertK = "INSERT into keyword_table(keyword) VALUES('$word')";
+                                $queryresult = mysql_query($insertK)
+                                    or die("Insert into keyword_table in media_upload_process.php" .mysql_error());
+
+                                $keywordsid = mysql_insert_id();
+
+                                $insertMK = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$keywordsid')";
                                 $queryresult = mysql_query($insertMK) 
                                     or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
 
 
                                 //TODO Need to restructure keywords for all of it to work with the for each loop
 
-                                $keywordsid = mysql_insert_id();
-                                $insertK = "INSERT into keyword_table(keyword_id, keyword) VALUES('$keywordsid', '$word')";
-                                $queryresult = mysql_query($insertK)
-                                    or die("Insert into keyword_table in media_upload_process.php" .mysql_error());
                             }
                         }
                     }
