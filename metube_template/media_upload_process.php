@@ -61,7 +61,7 @@ if(!file_exists($dirfile))
                             $check = "SELECT * FROM keyword_table WHERE keyword = $word";
                             $result = mysql_query($check);
                             if($data = mysql_fetch_array($result, MYSQL_NUM)){
-                                checker = true;
+                                $checker = true;
                                 $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $word";
                                 $word_id = mysql_query($add);
                                 $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
