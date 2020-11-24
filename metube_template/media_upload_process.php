@@ -58,16 +58,16 @@ if(!file_exists($dirfile))
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){    
                         $keywords = explode(' ', $_POST['keywords']);//TODO check for mysql injections
                         foreach($keywords as $word){
-                            $check = "SELECT * FROM keyword_table WHERE keyword = '".$word."'";
+                            $check = "SELECT * FROM keyword_table WHERE keyword = '$word'";
                             $result = mysql_query($check) or die("Selected from keyword_table" .mysql_error());
-                            echo(mysql_result($result, 0));//TODO remove
                             $data = mysql_fetch_array($result, MYSQL_NUM);
                             if($data[0] > 1){
                                 $checker = true;
                                 $add = "SELECT `keyword_id` FROM `keyword_table` WHERE `keyword` = '$word'";
                                 $word_id = mysql_query($add)
                                     or die("Selecting from keyword table to get keyword_id in media_upload_process.php" .mysql_error());
-                                $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$word_id')";
+                                $grab = mysql_fetch_assoc($word_id);
+                                $insertMKR = "INSERT into media_to_keywords(media_id, keyword_id) VALUES('$mediaid', '$grab')";
                                 $queryresult = mysql_query($insertMKR) 
                                     or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
                             }
