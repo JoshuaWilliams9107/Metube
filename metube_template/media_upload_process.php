@@ -60,7 +60,8 @@ if(!file_exists($dirfile))
                         foreach($keywords as $word){
                             $check = "SELECT * FROM keyword_table WHERE keyword = $word";
                             $result = mysql_query($check);
-                            if($data = mysql_fetch_array($result, MYSQL_NUM)){
+                            $data = mysql_fetch_array($result, MYSQL_NUM);
+                            if($data[0] > 1){
                                 $checker = true;
                                 $add = "SELECT keyword_id FROM keyword_table WHERE keyword = $word";
                                 $word_id = mysql_query($add);
