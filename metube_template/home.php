@@ -20,8 +20,9 @@ if(isset($_POST['nextpage'])) {
 	//Doesnt' go to next page if there are no results
 	parse_str($_SERVER['QUERY_STRING'], $query_string);
 	$pageNumber = $query_string['page']+1;
-	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",9"; 
-	if(mysql_num_rows($query) > 0){
+	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",".(($pageNumber*$totalpageSize)+$totalpageSize).";"; 
+	$result = mysql_query( $query );
+	if(mysql_num_rows($result) > 0){
 		header("Location: home.php?page=".$pageNumber."");
 	}else{
 		unset($_POST['nextpage']);
@@ -60,8 +61,7 @@ if(isset($_POST['lastpage'])) {
 	<table style="width:70%">
 		<tr>
 	<?php
-
-	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",9"; 
+    $query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",".(($pageNumber*$totalpageSize)+$totalpageSize).";"; 
 	$result = mysql_query( $query );
 	
 	if (!$result){
