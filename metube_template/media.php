@@ -62,7 +62,7 @@ $title = "SELECT `title` FROM `media` WHERE filename = '" .$result_row[1]. "'";
 $result = mysql_query($title);
 $vid_title = mysql_fetch_assoc($result);
 ?>
-<h4>Title:<?php echo " " $vid_title['title'];  ?></h4>
+<h4>Title: <?php echo $vid_title['title'];  ?></h4>
 
 <?php
 $description = "SELECT `description` FROM `media` WHERE filename ='" .$result_row[1]. "'";
