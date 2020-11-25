@@ -55,7 +55,6 @@ if(!file_exists($dirfile))
                     $mediaid = mysql_insert_id();
 
                     //insert and check keywords and keywords relation tables
-                    $checker = false;
                     if(isset($_POST['keywords']) && !empty($_POST['keywords'])){    
                         $keywords = explode(' ', $_POST['keywords']);//TODO check for mysql injections
                         foreach($keywords as $word){
@@ -63,7 +62,6 @@ if(!file_exists($dirfile))
                             $result = mysql_query($check) or die("Selected from keyword_table" .mysql_error());
                             $data = mysql_fetch_array($result, MYSQL_NUM);
                             if($data[0] > 1){
-                                $checker = true;
                                 $add = "SELECT `keyword_id` FROM `keyword_table` WHERE `keyword` = '$word'";
                                 $word_id = mysql_query($add)
                                     or die("Selecting from keyword table to get keyword_id in media_upload_process.php" .mysql_error());

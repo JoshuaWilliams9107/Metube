@@ -62,14 +62,19 @@ $title = "SELECT `title` FROM `media` WHERE filename = '" .$result_row[1]. "'";
 $result = mysql_query($title);
 $vid_title = mysql_fetch_assoc($result);
 ?>
-<h4>Title: <?php echo $vid_title['title'];  ?></h4>
+<p>
+<b>Title</b>: <?php echo $vid_title['title'];  ?>  
+<form action="favorite.php" method="get" id="favorite">
+<input type="submit" value="Favorite">
+</form>
+</p>
 
 <?php
 $description = "SELECT `description` FROM `media` WHERE filename ='" .$result_row[1]. "'";
 $result = mysql_query($description);
 $vid_desc = mysql_fetch_assoc($result);
 ?>
-<p><b>Description</b>:<?php echo $vid_desc['description']; ?></p>    
+<p><b>Description</b>: <?php echo $vid_desc['description']; ?></p>    
 
 <form method="post" action="comment.php">
     <label for="comment">Comment:</label><br>
