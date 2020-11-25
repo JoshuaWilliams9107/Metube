@@ -47,7 +47,7 @@ Your browser does not support the video tag.
 <?php
 $movie1 = $result_row[2].$result_row[1];
 echo '<div align="center">';
-echo '<video width="854" height="480" controls>';
+echo '<video width="960" height="480" controls>';
 echo '<source src= "'.$movie1.'" type="video/mp4">';
 echo "Your browser does not support the video tag.";
 echo '</video>';
@@ -74,7 +74,7 @@ $vid_desc = mysql_fetch_assoc($result);
 <form method="post" action="comment.php">
     <label for="comment">Comment:</label><br>
     <textarea type="text" rows="6" cols="50" id="comment" name="comment" placeholder="Enter comment here..."></textarea>
-    <input value="comment" name="submit" type="submit"/>
+    <input value="submit" name="submit" type="submit"/>
 </form>
 
 <!--
