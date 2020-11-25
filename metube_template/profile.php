@@ -14,9 +14,9 @@ if(isset($_POST['logout'])) {
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
-	  <li><a id="floatleft" href="/home.php">Home</a></li>
-	  <li><a id="floatleft" href="/media.php">Upload Media</a></li>
-	  <li><a id="floatleft" class="active" href="/profile.php">My Channel</a></li>
+	  <li><a id="floatleft" href="./home.php">Home</a></li>
+	  <li><a id="floatleft" href="./media.php">Upload Media</a></li>
+	  <li><a id="floatleft" class="active" href="./profile.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
@@ -31,7 +31,7 @@ if(isset($_POST['logout'])) {
 			
 			echo "<p style='float:left;vertical-align:top;'>username: $userRow[0]</p>";
 			?>
-			<form action="/friends.php">
+			<form action="./friends.php">
 				<input type="submit" value="View Contacts"/>
 			</form>
 		</div>
