@@ -63,8 +63,23 @@ $result = mysql_query($title);
 $vid_title = mysql_fetch_assoc($result);
 ?>
 <h4>Title:<?php echo $vid_title['title'];  ?></h4>
-    
-            <!--
+
+<br>
+
+<?php
+$description = "SELECT `description` FROM `media` WHERE filename ='" .$result_row[1]. "'";
+$result = mysql_query($description);
+$vid_desc = mysql_fetch_assoc($result);
+?>
+<p>Description:<?php echo $vid_desc['description']; ?></p>    
+
+<form method="post" action="comment.php">
+    <label for="comment">Comment:</label><br>
+    <textarea type="text" rows="10" cols="50" id="comment" name="comment" placeholder="Enter comment here..."></textarea>
+    <input name="submit" type="submit"/>
+</form>
+
+<!--
     <object id="MediaPlayer" width=320 height=286 classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components…" type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
 
 <param name="filename" value="<?php echo $result_row[2].$result_row[1];  ?>">
@@ -74,8 +89,7 @@ $vid_title = mysql_fetch_assoc($result);
 <embed type="application/x-mplayer2" src="<?php echo $result_row[2].$result_row[1];  ?>" name="MediaPlayer" width=320 height=240></embed>
 
 </object>
-
-            -->
+-->
           
 <?php
 	}
