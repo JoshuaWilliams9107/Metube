@@ -98,8 +98,14 @@ if(isset($_POST['lastpage'])) {
 
 				<?php
 				}
-				 echo $result_row[4];?>
-			    </a>
+				 echo "<p>".$result_row[4]."</p>";?>
+				 </a>
+				 <!--Get Uploader Information here-->
+				 <?php
+				 $uploaderquery = mysql_query("SELECT * FROM upload WHERE mediaid=".$result_row[0].";");
+				 $uploaderinformation = mysql_fetch_row($uploaderquery);
+				 echo "<p style='font-size:10px;'>".$uploaderinformation[1]."</p>";
+				 ?>
 				</center>
 				</td>
 			<?php
