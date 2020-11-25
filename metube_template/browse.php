@@ -39,8 +39,6 @@ function saveDownload(id)
 </div>
 <br/><br/>
 <?php
-
-
 	$query = "SELECT * from media"; 
 	$result = mysql_query( $query );
 	if (!$result)
