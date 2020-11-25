@@ -4,6 +4,7 @@
 session_start();
 
 include_once "function.php";
+include_once "logincheck.php";
 parse_str($_SERVER['QUERY_STRING'], $query_string);
 if(!isset($query_string['page'])){
 	header('Location: home.php?page=0');
@@ -20,8 +21,9 @@ if(isset($_POST['nextpage'])) {
 	//Doesnt' go to next page if there are no results
 	parse_str($_SERVER['QUERY_STRING'], $query_string);
 	$pageNumber = $query_string['page']+1;
-	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",9"; 
-	if(mysql_num_rows($query) > 0){
+	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",".(($pageNumber*$totalpageSize)+$totalpageSize).";"; 
+	$result = mysql_query( $query );
+	if(mysql_num_rows($result) > 0){
 		header("Location: home.php?page=".$pageNumber."");
 	}else{
 		unset($_POST['nextpage']);
@@ -60,8 +62,7 @@ if(isset($_POST['lastpage'])) {
 	<table style="width:70%">
 		<tr>
 	<?php
-
-	$query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",9"; 
+    $query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",".(($pageNumber*$totalpageSize)+$totalpageSize).";"; 
 	$result = mysql_query( $query );
 	
 	if (!$result){
@@ -84,10 +85,28 @@ if(isset($_POST['lastpage'])) {
 			<td>
 				<center>
 				<a href="/media.php?id=<?php echo $result_row[0];?>">
+
+				<?php if(strpos($result_row[3],'image') !== false){?>
+					<img src="<?php echo $result_row[2].$result_row[1];?>"
+				 alt="thumbnail" width=250px height=150px/> <br>
+				<?php }else if(!is_null($result_row[9])){?>
+				<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
+				 alt="thumbnail" width=250px height=150px/> <br>
+
+				<?php }else{?>
 				<img src="uploads/metube/BlankVideo.png"
 				 alt="blank user image" width=250px height=150px/> <br>
-				<?php echo $result_row[4];?>
-			    </a>
+
+				<?php
+				}
+				 echo "<p>".$result_row[4]."</p>";?>
+				 </a>
+				 <!--Get Uploader Information here-->
+				 <?php
+				 $uploaderquery = mysql_query("SELECT * FROM upload WHERE mediaid=".$result_row[0].";");
+				 $uploaderinformation = mysql_fetch_row($uploaderquery);
+				 echo "<p style='font-size:10px;'>".$uploaderinformation[1]."</p>";
+				 ?>
 				</center>
 				</td>
 			<?php

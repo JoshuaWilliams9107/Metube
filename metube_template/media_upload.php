@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "logincheck.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +26,10 @@ session_start();
 <input type="text" id="title" name="title"><br>
 
 <br>
-<!-- 
-<label for "thumbnail">Thumbnail:</label><br>
+
+<label for "thumbnail">Thumbnail: <em> (Only needed when uploading non-image files)</em></label><br>
 <input type="file" id="thumbnail" name="thumbnail" size="50"><br>
--->
+
 <br>
 
 <label for="description">Description:</label><br>
