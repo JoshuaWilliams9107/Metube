@@ -84,9 +84,21 @@ if(isset($_POST['lastpage'])) {
 			<td>
 				<center>
 				<a href="/media.php?id=<?php echo $result_row[0];?>">
+
+				<?php if(strpos($result_row[3],'image') !== false){?>
+					<img src="<?php echo $result_row[2].$result_row[1];?>"
+				 alt="thumbnail" width=250px height=150px/> <br>
+				<?php }else if(!is_null($result_row[9])){?>
+				<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
+				 alt="thumbnail" width=250px height=150px/> <br>
+
+				<?php }else{?>
 				<img src="uploads/metube/BlankVideo.png"
 				 alt="blank user image" width=250px height=150px/> <br>
-				<?php echo $result_row[4];?>
+
+				<?php
+				}
+				 echo $result_row[4];?>
 			    </a>
 				</center>
 				</td>

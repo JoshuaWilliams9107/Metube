@@ -39,14 +39,22 @@ if(!file_exists($dirfile))
 				}
 				else /*Successfully upload file*/
 				{
-                    			chmod($upfile, 0644);
+                    if(isset($_FILES["thumbnail"])){
+                        if(!file_exists($dirfile."/thumbnail"))
+                            mkdir($dirfile."/thumbnail", 0744);
+                        is_uploaded_file($_FILES["thumbnail"]["tmp_name"]);
+                        move_uploaded_file($_FILES["thumbnail"]["tmp_name"],$dirfile."/thumbnail/".urlencode($_FILES["thumbnail"]["name"]));
+                        chmod($upfile, 0644);
+                    }
+                    
 					//insert into media table
 
                                 $insert = "INSERT into media(
-                                    mediaid,filename,filepath,type,title,description,category)
+                                    mediaid,filename,filepath,type,title,description,category,thumbnailname)
                                     VALUES(NULL, '".urlencode($_FILES["file"]["name"])."', '".$dirfile."',
                                     '".$_FILES["file"]["type"]."','".mysql_real_escape_string($_POST["title"])."',
-                                    '".mysql_real_escape_string($_POST["description"])."','".$_POST["category"]."')";
+                                    '".mysql_real_escape_string($_POST["description"])."','".$_POST["category"]."','".
+                                    urlencode($_FILES["thumbnail"]["name"])."')";
 					$queryresult = mysql_query($insert)
 						  or die("Insert into Media error in media_upload_process.php " .mysql_error());
 
