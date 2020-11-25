@@ -74,7 +74,7 @@ $vid_desc = mysql_fetch_assoc($result);
 <form method="post" action="comment.php">
     <label for="comment">Comment:</label><br>
     <textarea type="text" rows="6" cols="50" id="comment" name="comment" placeholder="Enter comment here..."></textarea>
-    <input name="submit" type="submit"/>
+    <input value="comment" name="submit" type="submit"/>
 </form>
 
 <!--
