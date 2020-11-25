@@ -27,6 +27,7 @@ function saveDownload(id)
 <body>
 <p>Welcome <?php echo $_SESSION['username'];?></p>
 <div id='upload_result'>
+<a id="floatleft" class="active" href="./home.php">Home</a>
 <?php 
 	if(isset($_REQUEST['result']) && $_REQUEST['result']!=0)
 	{

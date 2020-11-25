@@ -24,7 +24,7 @@ if(isset($_POST['logout'])) {
 	<ul>
 	  <li><a id="floatleft" class="active" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
-      <li><a href='media_upload.php'  style="color:#FF9900;">Upload Media</a>
+      <li><a href='media_upload.php'>Upload Media</a>
 	  <li><a id="floatleft" href="./profile.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
