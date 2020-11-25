@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <?php
 session_start();
-
 include_once "function.php";
 
 if(isset($_POST['submit'])) {
@@ -41,4 +40,8 @@ if(isset($_POST['submit'])) {
 <?php
   if(isset($login_error))
    {  echo "<div id='passwd_result'>".$login_error."</div>";}
+  parse_str($_SERVER['QUERY_STRING'], $query_string);
+  if(isset($query_string['mustlogin'])){
+	echo "<div id='passwd_result'>You must login to use the website</div>";
+  }
 ?>
