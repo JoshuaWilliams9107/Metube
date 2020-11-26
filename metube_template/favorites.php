@@ -11,7 +11,7 @@ include_once "logincheck.php";
 
 $userID=$_SESSION['username'];
 $mediaID =$_SESSION['media_id'];
-    if(isset($_POST['favorite']) && !empty($_POST['favorite'])){    
+    if(isset($_GET['favorite']) && !empty($_GET['favorite'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
         $result = mysql_query($check) or die("Selected from keyword_table" .mysql_error());
         $data = mysql_fetch_array($result, MYSQL_NUM);
