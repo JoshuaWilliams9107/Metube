@@ -47,7 +47,9 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 				</ul>
 			<?php }else{ ?>
 				<ul>
-					<li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">Uploaded Media</a></li>
+					<li>
+						<a id="floatleft" class="active" href="./channel.php?username=<?php echo $query_string['username']?>">Uploaded Media</a>
+					</li>
 				</ul>
 			<?php } ?>
 			<!--Video Code-->
