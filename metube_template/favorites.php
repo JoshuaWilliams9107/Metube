@@ -11,13 +11,14 @@ include_once "logincheck.php";
 
 $userID=$_SESSION['username'];
 
+echo $userID;
+
 if(isset($_GET['id'])){
     $query = "SELECT * FROM media WHERE mediaid='" .$_GET['id']."'";
     $result = mysql_query($query);
     $result_row = mysql_fetch_row($result);
 
     $file=$result_row[1];
-    echo $file;
 
     if(isset($_GET['favorite']) && !empty($_GET['favorite'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
