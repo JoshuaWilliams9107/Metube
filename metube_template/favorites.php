@@ -17,6 +17,7 @@ if(isset($_GET['id'])){
     $result_row = mysql_fetch_row($result);
 
     $file=$result_row[1];
+    echo $file;
 
     if(isset($_GET['favorite']) && !empty($_GET['favorite'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
