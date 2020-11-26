@@ -45,8 +45,10 @@ if(isset($_POST['lastpage'])) {
 	<ul>
 	  <li><a id="floatleft" class="active" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
+	  <?php if($_SESSION['username'] != ""){?>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-	  <li><a id="floatleft" href="./channelhome.php">My Channel</a></li>
+	  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
+	  <?php }?>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>

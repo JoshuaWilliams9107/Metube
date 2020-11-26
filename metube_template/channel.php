@@ -11,14 +11,15 @@ if(isset($_POST['logout'])) {
 }
 
 
- 
+//Query String Parsing
+parse_str($_SERVER['QUERY_STRING'], $query_string);
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-	  <li><a id="floatleft" class="active" href="./channelhome.php">My Channel</a></li>
+	  <li><a id="floatleft" class="active" href="./channel.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
@@ -28,19 +29,22 @@ if(isset($_POST['logout'])) {
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
 				<?php
-				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
+				$user = mysql_query("SELECT * FROM account WHERE username='".$query_string['username']."'");
 				$userRow = mysql_fetch_row($user);
 				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
 				echo "<p style=''>$userRow[4] $userRow[5]</p><br>";
 				?>
 			</div>
 		</div>
+
 		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
-			<ul>
-			  <li><a id="floatleft" class="active" href="./channelhome.php">My Uploads</a></li>
-			  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
-			  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
-			</ul>
+			<?php if($_SESSION['username'] == $query_string['username']){?>
+				<ul>
+				  <li><a id="floatleft" class="active" href="./channel.php">My Uploads</a></li>
+				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
+				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
+				</ul>
+			<?php }?>
 			<!--Video Code-->
 			<center>
 			<table style="width:70%">
@@ -49,7 +53,7 @@ if(isset($_POST['logout'])) {
 		    
 			$rowSize=3;
 			
-			$uploaderquery = mysql_query("SELECT * FROM upload WHERE username='".$_SESSION['username']."';");
+			$uploaderquery = mysql_query("SELECT * FROM upload WHERE username='".$query_string['username']."';");
 			
 			for($i=0; $i<mysql_num_rows($uploaderquery);$i++){
 				$uploaderinformation = mysql_fetch_row($uploaderquery);

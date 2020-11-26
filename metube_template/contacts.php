@@ -36,13 +36,14 @@ if(isset($_POST['friendDecision'])) {
 	}
 	
 }
+
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-	  <li><a id="floatleft" class="active" href="./channelhome.php">My Channel</a></li>
+	  <li><a id="floatleft" class="active" href="./channel.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
@@ -61,9 +62,9 @@ if(isset($_POST['friendDecision'])) {
 		</div>
 		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
 			<ul>
-			  <li><a id="floatleft" href="./channelhome.php">My Uploads</a></li>
+			  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 			  <li><a id="floatleft" class="active" href="./contacts.php">Contacts</a></li>
-			  <li><a id="floatleft" href="./contacts.php">Profile Settings</a></li>
+			  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 			</ul>
 			<!--Contacts Code-->
 			<center style="padding-top:100px;">
@@ -103,7 +104,7 @@ if(isset($_POST['friendDecision'])) {
 					
 					<?php
 				}else{
-					echo "<p>".$contacts[$i][2]."</p>";
+					echo "<p>".$contacts[$i][1]."</p>";
 				}
 				
 			}
