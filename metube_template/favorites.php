@@ -16,7 +16,7 @@ $query = "SELECT mediaid FROM media WHERE filename = '".$file."'";
 
 $media = mysql_query($query);
 $Media_A = mysql_fetch_assoc($media);
-$mediaID = Media_A['mediaid'];
+$mediaID = $Media_A['mediaid'];
 
     if(isset($_GET['filename']) && !empty($_GET['filename'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
