@@ -107,7 +107,7 @@ if(isset($_POST['lastpage'])) {
 				 <?php
 				 $uploaderquery = mysql_query("SELECT * FROM upload WHERE mediaid=".$result_row[0].";");
 				 $uploaderinformation = mysql_fetch_row($uploaderquery);
-				 echo "<p style='font-size:10px;'>".$uploaderinformation[1]."</p>";
+				 echo "<a style='font-size:10px;' href='/channel.php?username=".$uploaderinformation[1]."'>".$uploaderinformation[1]."</p>";
 				 ?>
 				</center>
 				</td>
