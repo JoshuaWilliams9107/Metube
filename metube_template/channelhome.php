@@ -39,8 +39,7 @@ if(isset($_POST['logout'])) {
 			<ul>
 			  <li><a id="floatleft" class="active" href="./channelhome.php">My Uploads</a></li>
 			  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
-		      <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-			  <li><a id="floatleft"  href="./channelhome.php">My Channel</a></li>
+			  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 			</ul>
 			<!--Video Code-->
 			<center>

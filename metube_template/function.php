@@ -50,7 +50,9 @@ function sendFriendRequest($recipient)
 		//1 = user does not exist
 		return 1;
 	}
-
+	if($recipient == $_SESSION['username']){
+		return 3; //You cannot send a friend request to yourself
+	}
 	$existsTest = mysql_query("SELECT * FROM contacts WHERE sender='".$_SESSION['username']."' and recipient='$recipient'");
 	echo mysql_num_rows($existsTest);
 	if(mysql_num_rows($existsTest) != 0){

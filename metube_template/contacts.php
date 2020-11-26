@@ -18,6 +18,9 @@ if(isset($_POST['addFriend'])) {
 	} else if($check == 2){
 		$login_error = "Friend Request Already Sent to that user";
 		unset($_POST['addFriend']);
+	}else if($check == 3){
+		$login_error = "You cannot send a Friend Request to yourself";
+		unset($_POST['addFriend']);
 	}else if($check == 0){
 		$login_error = "Friend Request Sent";
 		unset($_POST['addFriend']);
@@ -60,8 +63,7 @@ if(isset($_POST['friendDecision'])) {
 			<ul>
 			  <li><a id="floatleft" href="./channelhome.php">My Uploads</a></li>
 			  <li><a id="floatleft" class="active" href="./contacts.php">Contacts</a></li>
-		      <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-			  <li><a id="floatleft"  href="./channelhome.php">My Channel</a></li>
+			  <li><a id="floatleft" href="./contacts.php">Profile Settings</a></li>
 			</ul>
 			<!--Contacts Code-->
 			<center style="padding-top:100px;">
