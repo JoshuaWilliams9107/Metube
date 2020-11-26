@@ -9,18 +9,18 @@ if(isset($_GET['keywords'])){
     $key_id = mysql_query("
         SELECT keyword_id
         FROM keyword_table
-        WHERE keywords LIKE '%{$keywords}%'
+        WHERE keyword LIKE '%{$keywords}%'
     ");
     
     $media_id = mysql_query("
-        SELECT mediaid 
+        SELECT media_id 
         FROM media_to_keywords
-        WHERE keyword_id = '".$key_id."'");
+        WHERE keyword_id = '$key_id'");
 
     $query = mysql_query("
         SELECT filename
         FROM media
-        WHERE mediaid = '".$media_id."'");
+        WHERE mediaid = '$media_id'");
     
     ?>
     <div class="num_results">
