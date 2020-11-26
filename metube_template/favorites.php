@@ -11,6 +11,7 @@ include_once "logincheck.php";
 
 $userID=$_SESSION['username'];
 $file=$_GET['filename'];
+echo $file;
 
 $query = "SELECT mediaid FROM media WHERE filename = '".$file."'";
 $mediaID = mysql_query($query);
