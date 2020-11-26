@@ -14,6 +14,9 @@
 </head>
 
 <body>
+<ul>
+    <li><a id="floatleft" class="active" href="./home.php">Home </a></li>
+</ul>
 <?php
 if(isset($_GET['id'])) {
 	$query = "SELECT * FROM media WHERE mediaid='".$_GET['id']."'";
