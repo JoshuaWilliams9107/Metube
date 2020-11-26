@@ -6,11 +6,22 @@ include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
 
+    $key_id = mysql_query("
+        SELECT keyword_id
+        FROM keyword_table
+        WHERE keywords LIKE '%{$keywords}%'
+    ");
+    
+    $media_id = mysql_query("
+        SELECT mediaid 
+        FROM media_to_keywords
+        WHERE keyword_id = '".$key_id."'");
+
     $query = mysql_query("
         SELECT filename
         FROM media
-        WHERE filename LIKE '%{$keywords}%'
-    ");
+        WHERE mediaid = '".$media_id."'");
+    
     ?>
     <div class="num_results">
         Found <?php echo mysql_num_rows($query); ?> results.
