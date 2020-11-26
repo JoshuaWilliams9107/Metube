@@ -26,7 +26,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 	  </form>
 	</ul>
 
-		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
+		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
 				<?php
