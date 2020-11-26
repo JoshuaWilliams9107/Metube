@@ -30,8 +30,6 @@ if(isset($_POST['logout'])) {
 				<?php
 				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
 				$userRow = mysql_fetch_row($user);
-				
-				
 				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
 				echo "<p style=''>$userRow[4] $userRow[5]</p><br>";
 				?>

@@ -51,12 +51,12 @@ if(isset($_POST['friendDecision'])) {
 				<?php
 				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
 				$userRow = mysql_fetch_row($user);
-				echo "<p style='float:left;vertical-align:top;'>$userRow[4] $userRow[5]</p><br>";
-				
 				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
+				echo "<p style=''>$userRow[4] $userRow[5]</p><br>";
 				?>
-				<br><br><br><br><br><br><br><br><br><br><br>
 			</div>
+		</div>
+		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
 			<ul>
 			  <li><a id="floatleft" href="./channelhome.php">My Uploads</a></li>
 			  <li><a id="floatleft" class="active" href="./contacts.php">Contacts</a></li>
