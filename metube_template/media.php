@@ -64,7 +64,7 @@ $vid_title = mysql_fetch_assoc($result);
 ?>
 <p>
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
-<form action="favorite.php" method="get" id="favorite">
+<form action="favorites.php" method="get" id="favorite">
 <input type="submit" value="Favorite">
 </form>
 </p>
