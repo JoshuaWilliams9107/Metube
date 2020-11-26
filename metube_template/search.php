@@ -6,7 +6,6 @@ include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
     $keywords = explode(' ', $keywords);
-    $count = 0;
 
     foreach($keywords as $word){
         $key_id = mysql_query("
@@ -30,7 +29,7 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$true_media_id['media_id']."'");
         ?>
         <?php
-        $r = mysql_fetch_object($query))
+        $r = mysql_fetch_object($query));
         ?>
         <div class="result">
             <a href="#"><?php echo $r->filename; ?> </a>     
