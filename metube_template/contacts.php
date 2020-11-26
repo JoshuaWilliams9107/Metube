@@ -88,7 +88,7 @@ if(isset($_POST['friendDecision'])) {
 			if($contacts[$i][1] == $_SESSION['username']){
 				if($contacts[$i][3] == 0){
 					echo "<a href='/channel.php?username=".$contacts[$i][2]."' style='display:inline;'>".$contacts[$i][2]."</a>";
-					echo "<p style='display:inline;'> Request Pending</p>";
+					echo "<p style='display:inline;'> Request Pending</p><br>";
 				}else{
 					echo "<a href='/channel.php?username=".$contacts[$i][2]."'>".$contacts[$i][2]."</a><br>";
 				}
