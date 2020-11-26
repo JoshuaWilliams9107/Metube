@@ -39,7 +39,7 @@ if(isset($_POST['friendDecision'])) {
 	<ul>
 	  <li><a id="floatleft" href="/home.php">Home</a></li>
 	  <li><a id="floatleft" href="/media.php">Upload Media</a></li>
-	  <li><a id="floatleft" class="active" href="/profile.php">My Channel</a></li>
+	  <li><a id="floatleft" class="active" href="/channelhome.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>

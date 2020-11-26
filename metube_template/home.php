@@ -46,7 +46,7 @@ if(isset($_POST['lastpage'])) {
 	  <li><a id="floatleft" class="active" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-	  <li><a id="floatleft" href="./profile.php">My Channel</a></li>
+	  <li><a id="floatleft" href="./channelhome.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
