@@ -45,7 +45,11 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
-			<?php }?>
+			<?php }else{ ?>
+				<ul>
+					<li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">Uploaded Media</a></li>
+				</ul>
+			<?php } ?>
 			<!--Video Code-->
 			<center>
 			<table style="width:70%">
