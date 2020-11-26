@@ -11,6 +11,8 @@ if(isset($_GET['keywords'])){
         FROM keyword_table
         WHERE keyword LIKE '%{$keywords}%'
     ");
+
+    echo $key_id;
     
     $media_id = mysql_query("
         SELECT media_id 
