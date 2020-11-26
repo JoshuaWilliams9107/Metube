@@ -26,7 +26,7 @@ $mediaID = $Media_A['mediaid'];
             $fav_id = mysql_query($add)
                 or die("Selecting from favorite table to get favorite_id in favorite.php" .mysql_error());
             $grab = mysql_fetch_assoc($fav_id);
-            $insertUFR = "INSERT into media_to_favorites(user_id, favorite_id) VALUES('$userID', '".$grab['favorite_id']."')";
+            $insertUFR = "INSERT into media_to_favorites(username, favorite_id) VALUES('$userID', '".$grab['favorite_id']."')";
             $queryresult = mysql_query($insertUFR) 
                 or die("Insert into media_to_favorites in favorite.php" .mysql_error());
         }
