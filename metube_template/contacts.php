@@ -33,19 +33,39 @@ if(isset($_POST['friendDecision'])) {
 	}
 	
 }
- 
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
-	  <li><a id="floatleft" href="/home.php">Home</a></li>
-	  <li><a id="floatleft" href="/media.php">Upload Media</a></li>
-	  <li><a id="floatleft" class="active" href="/channelhome.php">My Channel</a></li>
+	  <li><a id="floatleft" href="./home.php">Home</a></li>
+	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
+      <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
+	  <li><a id="floatleft" class="active" href="./channelhome.php">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
 	</ul>
-	<center style="padding-top:100px;">
-		<form method="post" action="<?php echo "friends.php"; ?>">
+
+		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
+			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
+			<div style="display:inline-block;margin-left:20px;">
+				<?php
+				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
+				$userRow = mysql_fetch_row($user);
+				echo "<p style='float:left;vertical-align:top;'>$userRow[4] $userRow[5]</p><br>";
+				
+				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
+				?>
+				<br><br><br><br><br><br><br><br><br><br><br>
+			</div>
+			<ul>
+			  <li><a id="floatleft" href="./channelhome.php">My Uploads</a></li>
+			  <li><a id="floatleft" class="active" href="./contacts.php">Contacts</a></li>
+		      <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
+			  <li><a id="floatleft"  href="./channelhome.php">My Channel</a></li>
+			</ul>
+			<!--Contacts Code-->
+			<center style="padding-top:100px;">
+		<form method="post" action="<?php echo "contacts.php"; ?>">
 			<input type="text" name="recipient" placeholder="contact's username"/>
 			<input type="submit" value="Add Contact" name="addFriend"/>
 		</form>
@@ -73,7 +93,7 @@ if(isset($_POST['friendDecision'])) {
 				if($contacts[$i][3] == 0){
 					?>
 					<p style="display: inline-block;"><?php echo $contacts[$i][1];?></p>
-					<form method="post" action="<?php echo "friends.php";?>" style="display: inline-block;padding-left:20px;">
+					<form method="post" action="<?php echo "contacts.php";?>" style="display: inline-block;padding-left:20px;">
 						<input type="hidden" value="<?php echo $contacts[$i][1]?>" name="sender"/>
 						<input type="submit" value="Accept" name="friendDecision"/>
 						<input type="submit" value="Refuse" name="friendDecision"/>
@@ -89,4 +109,6 @@ if(isset($_POST['friendDecision'])) {
 	}
 	?>
 	</center>
+		</div>
+
 </body>
