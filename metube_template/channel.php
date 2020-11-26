@@ -19,7 +19,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a>
-	  <li><a id="floatleft" class="active" href="./channel.php">My Channel</a></li>
+	  <li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
@@ -40,7 +40,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<?php if($_SESSION['username'] == $query_string['username']){?>
 				<ul>
-				  <li><a id="floatleft" class="active" href="./channel.php">My Uploads</a></li>
+				  <li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
