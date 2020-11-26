@@ -24,7 +24,7 @@ if(isset($_GET['keywords'])){
     $query = mysql_query("
         SELECT filename
         FROM media
-        WHERE mediaid = '".$true_media_id."'");
+        WHERE mediaid = '".$true_media_id['media_id']."'");
     
     ?>
     <div class="num_results">
