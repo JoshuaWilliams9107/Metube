@@ -29,7 +29,7 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$true_media_id['media_id']."'");
         ?>
         <?php
-        $r = mysql_fetch_object($query));
+        $r = mysql_fetch_object($query);
         ?>
         <div class="result">
             <a href="#"><?php echo $r->filename; ?> </a>     
