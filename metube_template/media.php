@@ -68,7 +68,8 @@ $vid_title = mysql_fetch_assoc($result);
 <p>
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
 <form action="favorites.php" method="get" id="favorite">
-<input type="submit" value="Favorite">
+    <input type="hidden" id="filename" name="filename" value ="<?php echo $result_row[1]; ?>">
+    <input type="submit" value="Favorite">
 </form>
 </p>
 
