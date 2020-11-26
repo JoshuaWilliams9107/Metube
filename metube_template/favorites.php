@@ -32,4 +32,3 @@ $mediaID =$_SESSION['media_id'];
             $insertUF = "INSERT into media_to_favorites(user_id, favorite_id) VALUES('$userID', '$favoriteID')";
             $queryresult = mysql_query($insertUF) 
                 or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
-?>
