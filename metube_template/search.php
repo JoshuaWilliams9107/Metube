@@ -5,27 +5,30 @@ include_once "function.php";
 include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
+    $keywords = explode(' ', $keywords);
+    $count = 0;
 
-    $key_id = mysql_query("
-        SELECT keyword_id
-        FROM keyword_table
-        WHERE keyword LIKE '%{$keywords}%'
-    ");
+    foreach($keywords as $word){
+        $key_id = mysql_query("
+            SELECT keyword_id
+            FROM keyword_table
+            WHERE keyword LIKE '%{$word}%'
+        ");
 
-    $true_key_id = mysql_fetch_assoc($key_id);
+        $true_key_id = mysql_fetch_assoc($key_id);
     
-    $media_id = mysql_query("
-        SELECT media_id 
-        FROM media_to_keywords
-        WHERE keyword_id = '".$true_key_id['keyword_id']."'");
+        $media_id = mysql_query("
+            SELECT media_id 
+            FROM media_to_keywords
+            WHERE keyword_id = '".$true_key_id['keyword_id']."'");
     
-    $true_media_id = mysql_fetch_assoc($media_id);
+        $true_media_id = mysql_fetch_assoc($media_id);
 
-    $query = mysql_query("
-        SELECT filename
-        FROM media
-        WHERE mediaid = '".$true_media_id['media_id']."'");
-    
+        $query = mysql_query("
+            SELECT filename
+            FROM media
+            WHERE mediaid = '".$true_media_id['media_id']."'");
+    }
     ?>
     <div class="num_results">
         Found <?php echo mysql_num_rows($query); ?> results.
@@ -38,7 +41,7 @@ if(isset($_GET['keywords'])){
             <div class="result">
                 <a href="#"><?php echo $r->filename; ?> </a>     
             </div>
-            <?php
+        <?php
         }
     }
 }
