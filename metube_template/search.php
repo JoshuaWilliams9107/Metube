@@ -28,20 +28,13 @@ if(isset($_GET['keywords'])){
             SELECT filename
             FROM media
             WHERE mediaid = '".$true_media_id['media_id']."'");
-    }
-    ?>
-    <div class="num_results">
-        Found <?php echo mysql_num_rows($query); ?> results.
-    </div>
-
-    <?php
-    if(mysql_num_rows($query)){
-        while($r = mysql_fetch_object($query)){
         ?>
-            <div class="result">
-                <a href="#"><?php echo $r->filename; ?> </a>     
-            </div>
         <?php
-        }
+        $r = mysql_fetch_object($query))
+        ?>
+        <div class="result">
+            <a href="#"><?php echo $r->filename; ?> </a>     
+        </div>
+        <?php
     }
 }
