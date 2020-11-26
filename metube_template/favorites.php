@@ -11,10 +11,12 @@ include_once "logincheck.php";
 
 $userID=$_SESSION['username'];
 $file=$_GET['filename'];
-echo $file;
 
 $query = "SELECT mediaid FROM media WHERE filename = '".$file."'";
-$mediaID = mysql_query($query);
+
+$media = mysql_query($query);
+$Media_A = mysql_fetch_assoc($media);
+$mediaID = Media_A['mediaid'];
 
     if(isset($_GET['filename']) && !empty($_GET['filename'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
