@@ -48,7 +48,7 @@ Your browser does not support the video tag.
 $movie1 = $result_row[2].$result_row[1];
 echo '<div align="center">';
 echo '<video width="960" height="480" controls>';
-echo '<source src= "/'.$movie1.'" type="video/mp4">';
+echo '<source src= "'.$movie1.'" type="video/mp4">';
 echo "Your browser does not support the video tag.";
 echo '</video>';
 echo '</div>';
