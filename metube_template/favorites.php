@@ -15,8 +15,8 @@ if(isset($_GET['id'])){
     $query = "SELECT * FROM media WHERE mediaid='" .$_GET['id']."'";
     $result = mysql_query($query);
     $result_row = mysql_fetch_row($result);
-}
-$file=$result_row[1];
+
+    $file=$result_row[1];
 
     if(isset($_GET['favorite']) && !empty($_GET['favorite'])){    
         $check = "SELECT * FROM favorite_table WHERE media_id = '$mediaID'";
@@ -39,6 +39,7 @@ $file=$result_row[1];
             $insertUF = "INSERT into media_to_favorites(user_id, favorite_id) VALUES('$userID', '$favoriteID')";
             $queryresult = mysql_query($insertUF) 
                 or die("Insert into media_to_keywords in media_upload_process.php" .mysql_error());
+        }
         }
     }
 ?>
