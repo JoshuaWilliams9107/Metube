@@ -86,7 +86,7 @@ if(isset($_POST['lastpage'])) {
 				<center>
 				<a href="./media.php?id=<?php echo $result_row[0];?>">
 
-				<?php if(strpos($result_row[3],'image') != false){?>
+				<?php if(strpos($result_row[3],'image') !== false){?>
 					<img src="<?php echo $result_row[2].$result_row[1];?>"
 				 alt="thumbnail" width=250px height=150px/> <br>
 				<?php }else if(!is_null($result_row[9])){?>
