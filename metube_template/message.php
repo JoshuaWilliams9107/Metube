@@ -49,74 +49,17 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 			<?php }else{ ?>
 				<ul>
 					<li>
-						<a id="floatleft" class="active" href="./channel.php?username=<?php echo $query_string['username']?>">
+						<a id="floatleft" href="./channel.php?username=<?php echo $query_string['username']?>">
 						Uploaded Media</a>
-						<a id="floatleft" href="./message.php?username=<?php echo $query_string['username']?>">
+						<a id="floatleft" class="active"  href="./message.php?username=<?php echo $query_string['username']?>">
 						Send User Message</a>
 					</li>
 				</ul>
 			<?php } ?>
 			<!--Video Code-->
 			<center>
-			<table style="width:70%">
-			<tr>
-			<?php
-		    
-			$rowSize=3;
-			
-			$uploaderquery = mysql_query("SELECT * FROM upload WHERE username='".$query_string['username']."';");
-			if(mysql_num_rows($uploaderquery) == 0){
-				echo "<p style='font-size:20px;'>This channel has no uploaded media</p>";
-			}
-			for($i=0; $i<mysql_num_rows($uploaderquery);$i++){
-				$uploaderinformation = mysql_fetch_row($uploaderquery);
-				$query = "SELECT * from media WHERE mediaid=".$uploaderinformation[2].";"; 
-				$result = mysql_query( $query );
-				if (!$result){
-			   		die ("Could not query the media table in the database: <br />". mysql_error());
-				}
-				?>
-					
-				<?php
-
-				if($result_row = mysql_fetch_row($result)){
-					?>
-					<?php
-					 if($i % $rowSize == 0){ 
-						?>
-						</tr>
-						<tr>
-					<?php } ?>
-					<td>
-						<center>
-						<a href="./media.php?id=<?php echo $result_row[0];?>">
-
-						<?php if(strpos($result_row[3],'image') !== false){?>
-							<img src="<?php echo $result_row[2].$result_row[1];?>"
-						 alt="thumbnail" width=250px height=150px/> <br>
-						<?php }else if(!is_null($result_row[9])){?>
-						<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
-						 alt="thumbnail" width=250px height=150px/> <br>
-
-						<?php }else{?>
-						<img src="uploads/metube/BlankVideo.png"
-						 alt="blank user image" width=250px height=150px/> <br>
-
-						<?php
-						}
-						 echo "<p>".$result_row[4]."</p>";?>
-						 </a>
-						</center>
-						</td>
-					<?php
-				}else{
-					break;
-				}
-			}
-			?>
-		    </tr>
-		    </table>
-		</center>
+			<p> message here </p>
+			</center>
 		</div>
 
 </body>
