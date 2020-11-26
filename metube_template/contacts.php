@@ -80,31 +80,32 @@ if(isset($_POST['friendDecision'])) {
 	{  echo "<div id='passwd_result'>".$login_error."</div>";}
 	?>
 	<center style="padding-top:10px;">
-	<p>Contacts<p>
+	<p>Contacts</p>
 	<?php
 	$contacts = getContacts();
 	if($contacts){
 		for($i = 0; $i < count($contacts); $i++){
 			if($contacts[$i][1] == $_SESSION['username']){
 				if($contacts[$i][3] == 0){
-					echo "<p>".$contacts[$i][2]." Request Pending</p>";
+					echo "<a href='/channel.php?username=".$contacts[$i][2]."' style='display:inline;'>".$contacts[$i][2]."</a>";
+					echo "<p style='display:inline;'> Request Pending</p>";
 				}else{
-					echo "<p>".$contacts[$i][2]."</p>";
+					echo "<a href='/channel.php?username=".$contacts[$i][2]."'>".$contacts[$i][2]."</a><br>";
 				}
 				
 			}else{
 				if($contacts[$i][3] == 0){
 					?>
-					<p style="display: inline-block;"><?php echo $contacts[$i][1];?></p>
+					<?php echo "<a href='/channel.php?username=".$contacts[$i][1]."' style='display:inline;'>".$contacts[$i][1]."</a>";?>
 					<form method="post" action="<?php echo "contacts.php";?>" style="display: inline-block;padding-left:20px;">
 						<input type="hidden" value="<?php echo $contacts[$i][1]?>" name="sender"/>
 						<input type="submit" value="Accept" name="friendDecision"/>
 						<input type="submit" value="Refuse" name="friendDecision"/>
 					</form>
-					
+					<br>
 					<?php
 				}else{
-					echo "<p>".$contacts[$i][1]."</p>";
+					echo "<a href='/channel.php?username=".$contacts[$i][1]."'>".$contacts[$i][1]."</a><br>";
 				}
 				
 			}

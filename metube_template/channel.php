@@ -37,7 +37,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 			</div>
 		</div>
 
-		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
+		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<?php if($_SESSION['username'] == $query_string['username']){?>
 				<ul>
 				  <li><a id="floatleft" class="active" href="./channel.php">My Uploads</a></li>
@@ -54,7 +54,9 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 			$rowSize=3;
 			
 			$uploaderquery = mysql_query("SELECT * FROM upload WHERE username='".$query_string['username']."';");
-			
+			if(mysql_num_rows($uploaderquery) == 0){
+				echo "<p style='font-size:20px;'>This channel has no uploaded videos</p>";
+			}
 			for($i=0; $i<mysql_num_rows($uploaderquery);$i++){
 				$uploaderinformation = mysql_fetch_row($uploaderquery);
 				$query = "SELECT * from media WHERE mediaid=".$uploaderinformation[2].";"; 
