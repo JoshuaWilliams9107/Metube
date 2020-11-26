@@ -33,9 +33,12 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
+li a:hover {
+  color:white;
+}
 li a:hover:not(.active) {
   background-color: #111;
+  color:white;
 }
 
 .active {
