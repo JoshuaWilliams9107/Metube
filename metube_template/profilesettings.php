@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <?php
 session_start();
 
@@ -85,7 +86,7 @@ $username = $accountInfo[0];
 				?>
 			</div>
 		</div>
-		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
+		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<ul>
 			  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 			  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>

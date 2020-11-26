@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <?php
 session_start();
 
@@ -25,7 +26,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 	  </form>
 	</ul>
 
-		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
+		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
 				<?php
