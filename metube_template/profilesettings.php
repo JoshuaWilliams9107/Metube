@@ -58,10 +58,20 @@ if(isset($_POST['changelastname'])) {
 	unset($_POST['changelastname']);
 	header('Location: profilesettings.php');
 }
+if(isset($_POST['changemail'])) {
+	if($_POST['email'] != ""){
+		mysql_query("UPDATE account SET email='".$_POST['email']."' WHERE username='".$_SESSION['username']."';");
+	}else{
+		$signup_error = "Email cannot be blank";
+	}
+	unset($_POST['changemail']);
+	header('Location: profilesettings.php');
+}
 $accountResult = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."';");
 $accountInfo = mysql_fetch_row($accountResult);
 $firstName = $accountInfo[4];
 $lastName = $accountInfo[5];
+$email = $accountInfo[2];
 $username = $accountInfo[0];
 ?>
 <body style="padding:0;margin:0;">
@@ -110,6 +120,11 @@ $username = $accountInfo[0];
 					<label for="username">Last Name: </label>
 					<input type="text" name="lastname" placeholder="lastname" value="<?php echo $lastName ?>"/>
 					<input type="submit" value="Update Last Name" name="changelastname"/>
+				</form>
+				<form method="post" action="<?php echo "profilesettings.php"; ?>">
+					<label for="username">Email: </label>
+					<input type="email" name="email" placeholder="email" value="<?php echo $email ?>"/>
+					<input type="submit" value="Update Email" name="changemail"/>
 				</form>
 				<form method="post" action="<?php echo "profilesettings.php"; ?>">
 					<input class="text"  type="password" name="password" placeHolder="Password"><br>
