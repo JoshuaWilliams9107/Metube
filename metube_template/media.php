@@ -10,12 +10,22 @@
 <title>Media</title>
 <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
 <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/default.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
 <body>
 <ul>
-    <li><a id="floatleft" class="active" href="./home.php">Home </a></li>
+	  <li><a id="floatleft" href="./home.php">Home</a></li>
+	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
+	  <?php if($_SESSION['username'] != ""){?>
+      <li><a id="floatleft" href='media_upload.php'>Upload Media</a></li>
+	  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
+	  <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
+	  <?php }?>
+	  <form action="<?php echo "home.php";?>" method="post">
+   			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
+	  </form>
 </ul>
 <?php
 if(isset($_GET['id'])) {
