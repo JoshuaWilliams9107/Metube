@@ -17,12 +17,12 @@ if(isset($_GET['keywords'])){
         //$true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
-            SELECT *
+            SELECT media_id
             FROM media_to_keywords
             WHERE keyword_id = '".$key_id['keyword_id']."'");
         
         $media_ids = array();    
-        $true_media_id = mysql_fetch_assoc($media_id);
+        $true_media_id = mysql_fetch_array($media_id);
         foreach($true_media_id as $id){
             echo $id;    
         }
