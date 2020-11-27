@@ -5,30 +5,30 @@ include_once "function.php";
 include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
-    $keywords = explode(' ', $keywords);
-
-    foreach($keywords as $word){
+    //$keywords = explode(' ', $keywords);
+    
         $key_id = mysql_query("
-            SELECT keyword_id
+            SELECT *
             FROM keyword_table
-            WHERE keyword LIKE '%{$word}%'
+            WHERE keyword LIKE '%{$keywords}%'
         ");
 
         $true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
-            SELECT media_id 
+            SELECT * 
             FROM media_to_keywords
-            WHERE keyword_id = '".$true_key_id['keyword_id']."'");
+            WHERE keyword_id = '".$true_key_id[0]."'");
     
         $true_media_id = mysql_fetch_assoc($media_id);
 
         $query = mysql_query("
             SELECT filename
             FROM media
-            WHERE mediaid = '".$true_media_id['media_id']."'");
+            WHERE mediaid = '".$true_media_id[1]."'");
         ?>
         <?php
+        $query = array_unique($query);
         $r = mysql_fetch_object($query);
         ?>
         <div class="result">
@@ -36,4 +36,3 @@ if(isset($_GET['keywords'])){
         </div>
         <?php
     }
-}
