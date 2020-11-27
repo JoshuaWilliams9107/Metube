@@ -22,6 +22,9 @@ if(isset($_GET['keywords'])){
             WHERE keyword_id = '".$key_id['keyword_id']."'");
     
         $true_media_id = mysql_fetch_assoc($media_id);
+        foreach($true_media_id as $id){
+            echo $id['media_id'];    
+        }
 
         $query = mysql_query("
             SELECT filename
