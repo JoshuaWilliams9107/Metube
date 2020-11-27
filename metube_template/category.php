@@ -47,7 +47,7 @@ include_once "logincheck.php";
 
                 <?php
             }
-                echo "<p>".categoryinfo[4]."</p>";?>
+                echo "<p>".$categoryinfo[4]."</p>";?>
                 </a>
                 </center>
                 </td>
