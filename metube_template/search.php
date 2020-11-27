@@ -42,7 +42,3 @@ if(isset($_GET['keywords'])){
         }
    }
 }
-        </tr>
-        </table>
-        </div>
-    </body>
