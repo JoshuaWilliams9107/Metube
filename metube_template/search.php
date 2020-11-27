@@ -21,16 +21,10 @@ if(isset($_GET['keywords'])){
             FROM media_to_keywords
             WHERE keyword_id = '".$key_id['keyword_id']."'");
         
-        $media_ids = array();    
-        $true_media_id = mysql_fetch_array($media_id);
-        foreach($true_media_id as $id){
-            echo $id;    
-        }
+        //$media_ids = array();    
+        $true_media_id = fetchAllRows($media_id);
 
-        $query = mysql_query("
-            SELECT *
-            FROM media
-            WHERE mediaid = '".$true_media_id['media_id']."'");
+<<<<<<< HEAD
         ?>
         <?php
         $query_file = mysql_fetch_assoc($query);
@@ -87,3 +81,22 @@ if(isset($_GET['keywords'])){
         </table>
         </div>
     </body>
+=======
+        foreach($true_media_id as $id){
+ 
+            $query = mysql_query("
+            SELECT filename
+            FROM media
+            WHERE mediaid = '".$id[0]."'");
+            ?>
+            <?php
+            $query_file = mysql_fetch_assoc($query);
+            $query = array_unique($query_file);
+            ?>
+        }
+        
+        
+        
+   }
+}
+>>>>>>> aaf96da62297992bb98b3cd040efe3fba4786d10
