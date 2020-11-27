@@ -19,18 +19,18 @@ if(isset($_GET['keywords'])){
         $media_id = mysql_query("
             SELECT media_id
             FROM media_to_keywords
-            WHERE keyword_id = '$key_id'");
+            WHERE keyword_id = '$key_id['keyword_id']'");
     
-        //$true_media_id = mysql_fetch_assoc($media_id);
+        $true_media_id = mysql_fetch_assoc($media_id);
 
         $query = mysql_query("
             SELECT filename
             FROM media
-            WHERE mediaid = '$media_id'");
+            WHERE mediaid = '$true_media_id['media_id']'");
         ?>
         <?php
         $query_file = mysql_fetch_assoc($query);
-        $query = array_unique($query_file);
+        $query = array_unique($query_file['filename']);
         ?>
         <div class="result">
         <?php foreach($query as $r) ?>
