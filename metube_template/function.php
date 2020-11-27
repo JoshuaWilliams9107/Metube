@@ -131,7 +131,10 @@ function upload_error($result)
 		return  "Upload file failed";
 	}
 }
-
+function santitize($variable)
+{
+	return filter_var(mysql_real_escape_string($variable), FILTER_SANITIZE_STRING); 
+}
 function other()
 {
 	//You can write your own functions here.

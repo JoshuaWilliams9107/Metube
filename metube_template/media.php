@@ -24,7 +24,7 @@
 			$error_message = "Comment cannot be blank";
 		}else{
 			$date = date('Y-m-d H:i:s');
-			$insertcomment = "INSERT INTO video_comment (username,media_id,comment,Time_stamp) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".$_POST['comment']."','".$date."');";
+			$insertcomment = "INSERT INTO video_comment (username,media_id,comment,Time_stamp) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".santitize($_POST['comment'])."','".$date."');";
 			$result = mysql_query($insertcomment);
 			if (!$result)
 			{
