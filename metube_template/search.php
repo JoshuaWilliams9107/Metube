@@ -29,10 +29,10 @@ if(isset($_GET['keywords'])){
         ?>
         <?php
         $query = array_unique($query);
-        $r = mysql_fetch_object($query);
         ?>
         <div class="result">
-            <a href="#"><?php echo $r->filename; ?> </a>     
+        <?php for each($queary as $r) ?>
+            <a href="#"><?php echo $r; ?> </a>     
         </div>
         <?php
     }
