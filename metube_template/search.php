@@ -23,7 +23,7 @@ if(isset($_GET['keywords'])){
     
         $true_media_id = mysql_fetch_assoc($media_id);
         foreach($true_media_id as $id){
-            echo $id['media_id'];    
+            echo $id;    
         }
 
         $query = mysql_query("
