@@ -82,6 +82,14 @@ function getContacts(){
 		return null;
 	}
 }
+function getPlaylists(){
+	$result = mysql_query("SELECT * FROM playlist WHERE username='".$_SESSION['username']."'; ");
+	if(mysql_num_rows($result) > 0 ){
+		return fetchAllRows($result);
+	}else{
+		return null;
+	}
+}
 function fetchAllRows($result){
 	if(mysql_num_rows($result) > 0 ){
 		while($row = mysql_fetch_array($result)){
