@@ -46,6 +46,10 @@
 	  </form>
 </ul>
 <?php
+	if(isset($error_message))
+	{  echo "<div id='passwd_result'>".$error_message."</div>";}
+	?>
+<?php
 if(isset($_GET['id'])) {
 	$query = "SELECT * FROM media WHERE mediaid='".$_GET['id']."'";
 	$result = mysql_query( $query );
@@ -154,10 +158,7 @@ else
 <?php
 }
 ?>
-<?php
-	if(isset($error_message))
-	{  echo "<div id='passwd_result'>".$error_message."</div>";}
-	?>
+
 </body>
 
 </html>
