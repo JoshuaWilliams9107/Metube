@@ -55,6 +55,7 @@ if(isset($_POST['lastpage'])) {
 	  </form>
 	</ul>
 	<center>
+    <div>
 	<form action="search.php" method="get">
 		<label>
 			Search
@@ -73,7 +74,8 @@ if(isset($_POST['lastpage'])) {
             <option value="Others">Others</option>
         </select>
     <input value="Go" name="submit" type="submit"/>
-	<table style="width:70%">
+    </div>
+<table style="width:70%">
 		<tr>
 	<?php
     $query = "SELECT * from media LIMIT ".$pageNumber*$totalpageSize.",".(($pageNumber*$totalpageSize)+$totalpageSize).";"; 
