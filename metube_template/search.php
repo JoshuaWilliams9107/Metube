@@ -30,7 +30,7 @@ if(isset($_GET['keywords'])){
         ?>
         <?php
         $query_file = mysql_fetch_assoc($query);
-        $query = array_unique($query_file['filename']);
+        $query = array_unique($query_file);
         ?>
         <div class="result">
         <?php foreach($query as $r) ?>
