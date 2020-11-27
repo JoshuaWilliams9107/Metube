@@ -101,20 +101,33 @@ $vid_title = mysql_fetch_assoc($result);
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
 <br>
 <a href="<?php echo $result_row[2].$result_row[1];?>" download> Download </a>
+<?php 
+$playlistResult = mysql_query("SELECT * FROM playlist WHERE username='".$_SESSION['username']."';");
+if(mysql_num_rows($playlistResult) != 0){
+?>
 <form method="post" action="<?php echo "media.php?id=".$_GET['id'].""; ?>">
 	<label for="playlistname">Playlist Name: </label>
 	<select name="playlistname">
 		<?php 
 			$playlistResult = mysql_query("SELECT * FROM playlist WHERE username='".$_SESSION['username']."';");
+			if(mysql_num_rows($playlistResult) != 0){
 			for($i = 0; $i < mysql_num_rows($playlistResult); $i++){
 				$playlistRow = mysql_fetch_row($playlistResult);
 		?>
 				<option value="<?php echo $playlistRow[0]?>"><?php echo $playlistRow[1]?></option>
-		<?php } ?>
+		<?php }
+		} ?>
 	</select>
 	
 	<input type="submit" value="Add to Playlist" name="addtoplaylist"/>
 </form>
+<?php 
+}else{
+	?> 
+	<p>You must create a playlist in My Channel to add this video to you playlist.</p>
+	<?php
+}
+?>
 <!--
 <form action="favorites.php" method="get" id="favorite">
     <input type="hidden" id="filename" name="filename" value ="<?php echo $result_row[1]; ?>">
