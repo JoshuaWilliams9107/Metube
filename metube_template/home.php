@@ -68,10 +68,10 @@ if(isset($_POST['lastpage'])) {
     option[value=""][disabled]{ display: none;}
     option{ color: black; }
     </style>
-    <form action "category.php" method="get">
+    <form action="category.php" method="get">
         <select required id="category" name="category">
             <option value="" disabled selected>Categories: </option>
-            <option value="Sports" selected>Sports</option>
+            <option value="Sports">Sports</option>
             <option value="Education">Education</option>
             <option value="Video Games">Video Games</option>
             <option value="Vlogs">Vlogs</option>
