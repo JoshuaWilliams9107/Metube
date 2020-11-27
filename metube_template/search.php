@@ -8,7 +8,7 @@ if(isset($_GET['keywords'])){
     //$keywords = explode(' ', $keywords);
     
         $key_id = mysql_query("
-            SELECT *
+            SELECT keyword_id
             FROM keyword_table
             WHERE keyword LIKE '%{$keywords}%'
         ");
@@ -16,7 +16,7 @@ if(isset($_GET['keywords'])){
         $true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
-            SELECT * 
+            SELECT media_id
             FROM media_to_keywords
             WHERE keyword_id = '".$true_key_id[0]."'");
     
@@ -28,7 +28,8 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$true_media_id[1]."'");
         ?>
         <?php
-        $query = array_unique($query);
+        $query_file = mysql_fetch_assoc($query);
+        $query = array_unique($query_file);
         ?>
         <div class="result">
         <?php foreach($query as $r) ?>
