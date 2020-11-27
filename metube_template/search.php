@@ -5,35 +5,35 @@ include_once "function.php";
 include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
-    $keywords = explode(' ', $keywords);
-
-    foreach($keywords as $word){
+    //$keywords = explode(' ', $keywords);
+    
         $key_id = mysql_query("
             SELECT keyword_id
             FROM keyword_table
-            WHERE keyword LIKE '%{$word}%'
+            WHERE keyword LIKE '%{$keywords}%'
         ");
 
-        $true_key_id = mysql_fetch_assoc($key_id);
+        //$true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
-            SELECT media_id 
+            SELECT media_id
             FROM media_to_keywords
-            WHERE keyword_id = '".$true_key_id['keyword_id']."'");
+            WHERE keyword_id = '$key_id'");
     
-        $true_media_id = mysql_fetch_assoc($media_id);
+        //$true_media_id = mysql_fetch_assoc($media_id);
 
         $query = mysql_query("
             SELECT filename
             FROM media
-            WHERE mediaid = '".$true_media_id['media_id']."'");
+            WHERE mediaid = '$media_id'");
         ?>
         <?php
-        $r = mysql_fetch_object($query);
+        $query_file = mysql_fetch_assoc($query);
+        $query = array_unique($query_file);
         ?>
         <div class="result">
-            <a href="#"><?php echo $r->filename; ?> </a>     
+        <?php foreach($query as $r) ?>
+            <a href="#"><?php echo $r; ?> </a>     
         </div>
         <?php
     }
-}
