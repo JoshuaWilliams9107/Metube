@@ -31,7 +31,7 @@ if(isset($_POST['submit'])) {
 		<input class="text"  type="text" name="firstName" placeholder="First Name"><br>
 		<input class="text"  type="text" name="lastName" placeholder="Last Name"><br>
 		<input class="text"  type="text" name="username" placeholder="Username"><br>
-		<input class="text"  type="text" name="email" placeholder="Email Address"><br>
+		<input class="text"  type="email" name="email" placeholder="Email Address"><br>
 		<input class="text"  type="password" name="password" placeHolder="Password"><br>
 		<input class="text"  type="password" name="passwordC" placeHolder="Confirm Password"><br>
 		<input name="submit" type="submit" value="Sign Up"><br>
