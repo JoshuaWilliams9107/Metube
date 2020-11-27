@@ -24,7 +24,6 @@ if(isset($_GET['keywords'])){
         //$media_ids = array();    
         $true_media_id = fetchAllRows($media_id);
 
-<<<<<<< HEAD
         ?>
         <?php
         $query_file = mysql_fetch_assoc($query);
@@ -81,7 +80,6 @@ if(isset($_GET['keywords'])){
         </table>
         </div>
     </body>
-=======
         foreach($true_media_id as $id){
  
             $query = mysql_query("
@@ -99,4 +97,3 @@ if(isset($_GET['keywords'])){
         
    }
 }
->>>>>>> aaf96da62297992bb98b3cd040efe3fba4786d10
