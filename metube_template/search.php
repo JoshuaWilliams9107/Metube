@@ -6,11 +6,11 @@ include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
     $keywords = explode(' ', $keywords);
-    
+   foreach($keywords as $word){ 
         $key_id = mysql_query("
             SELECT keyword_id
             FROM keyword_table
-            WHERE keyword LIKE '%{$keywords}%'
+            WHERE keyword LIKE '%{$word}%'
         ");
         $key_id = mysql_fetch_assoc($key_id);
         echo $key_id;
@@ -38,4 +38,5 @@ if(isset($_GET['keywords'])){
             <a href="#"><?php echo $r; ?> </a>     
         </div>
         <?php
-    }
+   }
+}
