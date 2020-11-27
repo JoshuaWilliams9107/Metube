@@ -31,7 +31,7 @@ if(isset($_GET['keywords'])){
         $query = array_unique($query);
         ?>
         <div class="result">
-        <?php for each($query as $r) ?>
+        <?php foreach($query as $r) ?>
             <a href="#"><?php echo $r; ?> </a>     
         </div>
         <?php
