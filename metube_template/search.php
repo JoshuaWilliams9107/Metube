@@ -23,12 +23,18 @@ if(isset($_GET['keywords'])){
         
         //$media_ids = array();    
         $true_media_id = fetchAllRows($media_id);
+        foreach($true_media_id as $id){
+ 
+            $query = mysql_query("
+            SELECT filename
+            FROM media
+            WHERE mediaid = '".$id[0]."'");
+            ?>
+            <?php
+            $query_file = mysql_fetch_assoc($query);
+            $query = array_unique($query_file);
+            ?>
 
-        ?>
-        <?php
-        $query_file = mysql_fetch_assoc($query);
-        $query = array_unique($query_file);
-        ?>
         <body style="padding:0, margin:0;">
         <ul>
             <li><a id="floatleft" href="./home.php">Home</a></li>
@@ -55,7 +61,7 @@ if(isset($_GET['keywords'])){
                 <?php if(strpos($searchinfo[3], 'image') !== false){?>
                     <img src="<?php echo $searchinfo[2].$searchinfo[1]; ?>"
                 alt="thumbnail" width=250px height=150px/><br>
-                <?php} else if(!is_null($searchinfo[9])){?>
+                <?php } else if(!is_null($searchinfo[9])){?>
                 <img src="<?php echo $searchinfo[2]."thumbnail/".$searchinfo[9]?>"
                 alt="thumbnail" width=250px height=150px/><br>
                 
@@ -75,25 +81,9 @@ if(isset($_GET['keywords'])){
                 break;
             }
         }
+        }
         ?>
         </tr>
         </table>
         </div>
     </body>
-        foreach($true_media_id as $id){
- 
-            $query = mysql_query("
-            SELECT filename
-            FROM media
-            WHERE mediaid = '".$id[0]."'");
-            ?>
-            <?php
-            $query_file = mysql_fetch_assoc($query);
-            $query = array_unique($query_file);
-            ?>
-        }
-        
-        
-        
-   }
-}
