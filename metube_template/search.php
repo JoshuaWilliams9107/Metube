@@ -38,7 +38,8 @@ if(isset($_GET['keywords'])){
             <?php
         }
    }
-            $query = array_unique($media_Arr);
+            $query_files = mysql_fetch_assoc($media_Arr);
+            $query = array_unique($query_files);
 ?>
 
             <div class="result">
