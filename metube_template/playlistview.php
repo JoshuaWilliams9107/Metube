@@ -69,12 +69,11 @@ if(isset($_POST['friendDecision'])) {
 				  <li><a id="floatleft" class="active" href="./playlists.php">Playlists</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
-			<!--Contacts Code-->
-			<center style="padding-top:100px;">
-		<form method="post" action="<?php echo "playlists.php"; ?>">
-			<input type="text" name="playlistname" placeholder="Playlist Name"/>
-			<input type="submit" value="Create Playlist" name="createPlaylist"/>
-		</form>
+	<?php 
+		$playlistinfo = mysql_fetch_row(mysql_query("SELECT * FROM playlist WHERE playlistid=".$_GET['playlistid'].""));
+	?>
+	<center style="padding-top:20px;">
+		<p>Playlist Name: <?php echo $playlistinfo[1]?></p>
 	</center>
 
 
@@ -82,17 +81,67 @@ if(isset($_POST['friendDecision'])) {
 	if(isset($error_message))
 	{  echo "<div id='passwd_result'>".$error_message."</div>";}
 	?>
-	<center style="padding-top:10px;">
-	<p>Playlists</p>
-	<?php
-	$playlists = getPlaylists();
-	if($playlists){
-		for($i = 0; $i < count($playlists); $i++){?>
-			<a href="/playlistview.php?playlistid=<?php echo $playlists[$i][0];?>"><?php echo $playlists[$i][1] ?></a>
-		<?php }
-	}
-	?>
-	</center>
+
+	<!-- Playlist View Code -->
+	<center>
+			<table style="width:70%">
+			<tr>
+			<?php
+		    
+			$rowSize=3;
+			$playlistquery = mysql_query("SELECT * FROM playlist_to_media WHERE playlistid='".$_GET['playlistid']."';");
+			if(mysql_num_rows($playlistquery) == 0){
+				echo "<p style='font-size:20px;'>This playlist has no media</p>";
+			}
+			for($i=0; $i<mysql_num_rows($playlistquery);$i++){
+				$playlistInfo = mysql_fetch_row($playlistquery);
+				$query = "SELECT * from media WHERE mediaid=".$playlistInfo[2].";"; 
+				$result = mysql_query( $query );
+				if (!$result){
+			   		die ("Could not query the media table in the database: <br />". mysql_error());
+				}
+				?>
+					
+				<?php
+
+				if($result_row = mysql_fetch_row($result)){
+					?>
+					<?php
+					 if($i % $rowSize == 0){ 
+						?>
+						</tr>
+						<tr>
+					<?php } ?>
+					<td>
+						<center>
+						<a href="./media.php?id=<?php echo $result_row[0];?>">
+
+						<?php if(strpos($result_row[3],'image') !== false){?>
+							<img src="<?php echo $result_row[2].$result_row[1];?>"
+						 alt="thumbnail" width=250px height=150px/> <br>
+						<?php }else if(!is_null($result_row[9])){?>
+						<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
+						 alt="thumbnail" width=250px height=150px/> <br>
+
+						<?php }else{?>
+						<img src="uploads/metube/BlankVideo.png"
+						 alt="blank user image" width=250px height=150px/> <br>
+
+						<?php
+						}
+						 echo "<p>".$result_row[4]."</p>";?>
+						 </a>
+						</center>
+						</td>
+					<?php
+				}else{
+					break;
+				}
+			}
+			?>
+		    </tr>
+		    </table>
+		</center>
 		</div>
 
 </body>
