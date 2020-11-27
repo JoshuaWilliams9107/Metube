@@ -64,7 +64,8 @@ if(isset($_POST['lastpage'])) {
 		<input type="submit" value="Search">
 	</form>
     <form action "category.php" method="get">
-        <select id="category" name="category" placeholder="Categories">
+        <select id="category" name="category">
+            <option value="" disabled selected>Categories </option>
             <option value="Sports" selected>Sports</option>
             <option value="Education">Education</option>
             <option value="Video Games">Video Games</option>
@@ -74,6 +75,7 @@ if(isset($_POST['lastpage'])) {
             <option value="Others">Others</option>
         </select>
     <input value="Go" name="submit" type="submit"/>
+    </form>
     </div>
 <table style="width:70%">
 		<tr>
