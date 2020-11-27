@@ -137,7 +137,7 @@ if(mysql_num_rows($playlistResult) != 0){
 <?php 
 }else{
 	?> 
-	<p>You must create a playlist in My Channel to add this video to you playlist.</p>
+	<p>You must create a playlist in My Channel to add this video to your playlist.</p>
 	<?php
 }
 ?>
