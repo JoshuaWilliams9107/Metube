@@ -12,6 +12,8 @@ if(isset($_GET['keywords'])){
             FROM keyword_table
             WHERE keyword LIKE '%{$keywords}%'
         ");
+        $key_id = mysql_fetch_assoc($key_id);
+        echo $key_id;
 
         //$true_key_id = mysql_fetch_assoc($key_id);
     
