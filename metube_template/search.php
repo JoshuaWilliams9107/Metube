@@ -33,13 +33,12 @@ if(isset($_GET['keywords'])){
             ?>
             <?php
             $query_file = mysql_fetch_assoc($query);
-            array_push($media_Arr, $query_file);
+            array_push($media_Arr, $query_file['filename']);
             ?>
             <?php
         }
    }
-            $query_files = mysql_fetch_assoc($media_Arr);
-            $query = array_unique($query_files);
+            $query = array_unique($media_Arr);
 ?>
 
             <div class="result">
