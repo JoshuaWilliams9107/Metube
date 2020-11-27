@@ -77,7 +77,7 @@ if(isset($_GET['id'])) {
 	{
 		echo "Viewing Picture:";
 		echo $result_row[2].$result_row[1];
-		echo "<img src='".$filepath.$filename."'/>";
+		echo " <br><img src='".$filepath.$filename."'/>";
 	}
 	else //view movie
 	{	
@@ -102,7 +102,7 @@ echo '</video>';
 echo '</div>';
 ?>
 
-
+<?php }?>
 <br>
 
 <?php 
@@ -185,7 +185,7 @@ for($i = 0; $i < mysql_num_rows($commentSelect); $i++){
 -->
           
 <?php
-	}
+	
 }
 else
 {
