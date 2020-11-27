@@ -3,6 +3,24 @@
 	session_start();
 	include_once "function.php";
 	include_once "logincheck.php";
+
+
+	if(isset($_POST['addtoplaylist'])) {
+		//add media to database
+		$checkPlaylist = mysql_query("SELECT * FROM playlist_to_media WHERE playlistid='".$_POST['playlistname']."' AND mediaid='".$_GET['id']."';");
+		if(mysql_num_rows($checkPlaylist) != 0){
+			$error_message = "This media is already in that playlist";
+		}else{
+			$result = mysql_query("INSERT INTO playlist_to_media (playlistid,mediaid) VALUES ('".$_POST['playlistname']."','".$_GET['id']."');");
+			if (!$result)
+			{
+		  		die ("addToPlaylist failed. Could not query the database: <br />". mysql_error());
+			}
+			$error_message = "Media added to playlist";
+		}
+	}
+
+
 ?>	
 <html>
 <head>
@@ -79,6 +97,20 @@ $vid_title = mysql_fetch_assoc($result);
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
 <br>
 <a href="<?php echo $result_row[2].$result_row[1];?>" download> Download </a>
+<form method="post" action="<?php echo "media.php?id=".$_GET['id'].""; ?>">
+	<label for="playlistname">Playlist Name: </label>
+	<select name="playlistname">
+		<?php 
+			$playlistResult = mysql_query("SELECT * FROM playlist WHERE username='".$_SESSION['username']."';");
+			for($i = 0; $i < mysql_num_rows($playlistResult); $i++){
+				$playlistRow = mysql_fetch_row($playlistResult);
+		?>
+				<option value="<?php echo $playlistRow[0]?>"><?php echo $playlistRow[1]?></option>
+		<?php } ?>
+	</select>
+	
+	<input type="submit" value="Add to Playlist" name="addtoplaylist"/>
+</form>
 <!--
 <form action="favorites.php" method="get" id="favorite">
     <input type="hidden" id="filename" name="filename" value ="<?php echo $result_row[1]; ?>">
@@ -122,5 +154,10 @@ else
 <?php
 }
 ?>
+<?php
+	if(isset($error_message))
+	{  echo "<div id='passwd_result'>".$error_message."</div>";}
+	?>
 </body>
+
 </html>
