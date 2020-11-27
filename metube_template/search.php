@@ -13,19 +13,19 @@ if(isset($_GET['keywords'])){
             WHERE keyword LIKE '%{$keywords}%'
         ");
 
-        $true_key_id = mysql_fetch_assoc($key_id);
+        //$true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
             SELECT media_id
             FROM media_to_keywords
-            WHERE keyword_id = '".$true_key_id[0]."'");
+            WHERE keyword_id = '$key_id'");
     
-        $true_media_id = mysql_fetch_assoc($media_id);
+        //$true_media_id = mysql_fetch_assoc($media_id);
 
         $query = mysql_query("
             SELECT filename
             FROM media
-            WHERE mediaid = '".$true_media_id[1]."'");
+            WHERE mediaid = '$media_id'");
         ?>
         <?php
         $query_file = mysql_fetch_assoc($query);
