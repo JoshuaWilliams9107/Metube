@@ -33,7 +33,7 @@ if(isset($_GET['keywords'])){
             ?>
             <?php
             $query_file = mysql_fetch_assoc($query);
-            $media_Arr = array_push($query_file);
+            array_push($media_Arr, $query_file);
             ?>
             <?php
         }
