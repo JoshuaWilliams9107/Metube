@@ -6,6 +6,7 @@ include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
     $keywords = explode(' ', $keywords);
+    $media_Arr = array();
    foreach($keywords as $word){ 
         $key_id = mysql_query("
             SELECT keyword_id
@@ -32,13 +33,16 @@ if(isset($_GET['keywords'])){
             ?>
             <?php
             $query_file = mysql_fetch_assoc($query);
-            $query = array_unique($query_file);
+            $media_Arr = array_push($query_file);
             ?>
+            <?php
+        }
+   }
+            $query = array_unique($media_Arr);
+?>
+
             <div class="result">
             <?php foreach($query as $r) ?>
                 <a href="#"><?php echo $r; ?> </a>     
             </div>
-            <?php
-        }
-   }
 }
