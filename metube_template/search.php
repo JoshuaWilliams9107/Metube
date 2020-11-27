@@ -13,8 +13,7 @@ if(isset($_GET['keywords'])){
             WHERE keyword LIKE '%{$word}%'
         ");
         $key_id = mysql_fetch_assoc($key_id);
-        echo $key_id;
-
+        echo $key_id['keyword_id'];
         //$true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
