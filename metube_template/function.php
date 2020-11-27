@@ -133,7 +133,7 @@ function upload_error($result)
 }
 function santitize($variable)
 {
-	return filter_var(mysql_real_escape_string($variable), FILTER_SANITIZE_STRING); 
+	return mysql_real_escape_string($variable); 
 }
 function other()
 {
