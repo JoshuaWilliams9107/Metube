@@ -5,7 +5,7 @@ include_once "function.php";
 include_once "logincheck.php";
 if(isset($_GET['keywords'])){
     $keywords = mysql_escape_string($_GET['keywords']);
-    //$keywords = explode(' ', $keywords);
+    $keywords = explode(' ', $keywords);
     
         $key_id = mysql_query("
             SELECT keyword_id
