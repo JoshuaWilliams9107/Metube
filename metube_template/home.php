@@ -64,7 +64,9 @@ if(isset($_POST['lastpage'])) {
 		<input type="submit" value="Search">
 	</form>
     <style>
-    select:invalid{color: grey;}
+    select:required:invalid {color: grey;}
+    option[value=""][disabled]{ display: none;}
+    option{ color: black; }
     </style>
     <form action "category.php" method="get">
         <select required id="category" name="category">
