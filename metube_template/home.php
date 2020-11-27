@@ -64,13 +64,13 @@ if(isset($_POST['lastpage'])) {
 		<input type="submit" value="Search">
 	</form>
     <style>
-    select:required:invalid {color: grey;}
+    select:required:invalid {align-content: center; color: grey;}
     option[value=""][disabled]{ display: none;}
     option{ color: black; }
     </style>
     <form action="category.php" method="get">
         <select required id="category" name="category">
-            <option value="" disabled selected>Categories: </option>
+            <option value="" disabled selected>Categories</option>
             <option value="Sports">Sports</option>
             <option value="Education">Education</option>
             <option value="Video Games">Video Games</option>
