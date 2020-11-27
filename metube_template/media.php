@@ -79,11 +79,12 @@ $vid_title = mysql_fetch_assoc($result);
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
 <br>
 <a href="<?php echo $result_row[2].$result_row[1];?>" download> Download </a>
-
+<!--
 <form action="favorites.php" method="get" id="favorite">
     <input type="hidden" id="filename" name="filename" value ="<?php echo $result_row[1]; ?>">
     <input type="submit" value="Favorite">
 </form>
+-->
 </p>
 
 <?php
