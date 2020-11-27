@@ -50,7 +50,7 @@ if(isset($_GET['keywords'])){
                 <?php } ?>
                 <td>
                     <center>
-                <a href="./media.php?id=<?php echo $searchinfo[0]:?>">
+                <a href="./media.php?id=<?php echo $searchinfo[0];?>">
 
                 <?php if(strpos($searchinfo[3], 'image') !== false){?>
                     <img src="<?php echo $searchinfo[2].$searchinfo[1]; ?>"
