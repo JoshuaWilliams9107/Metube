@@ -45,4 +45,5 @@ if(isset($_GET['keywords'])){
             <?php foreach($query as $r) ?>
                 <a href="#"><?php echo $r; ?> </a>     
             </div>
+<?php
 }
