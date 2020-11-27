@@ -19,7 +19,20 @@
 			$error_message = "Media added to playlist";
 		}
 	}
-
+	if(isset($_POST['submitcomment'])) {
+		if($_POST['comment'] ==""){
+			$error_message = "Comment cannot be blank";
+		}else{
+			$date = date('Y-m-d H:i:s');
+			$insertcomment = "INSERT INTO video_comment (username,media_id,comment,Time_stamp) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".$_POST['comment']."','".$date."');";
+			$result = mysql_query($insertcomment);
+			if (!$result)
+			{
+	  			die ("Comment failed. Could not query the database: <br />". mysql_error());
+			}
+			$error_message = "Comment Created";
+		}
+	}
 
 ?>	
 <html>
@@ -143,12 +156,22 @@ $vid_desc = mysql_fetch_assoc($result);
 ?>
 <p><b>Description</b>: <?php echo $vid_desc['description']; ?></p>    
 
-<form method="post" action="comment.php">
+<form method="post" action="media.php?id=<?php echo $_GET['id'];?>">
     <label for="comment">Comment:</label><br>
     <textarea type="text" rows="6" cols="50" id="comment" name="comment" placeholder="Enter comment here..."></textarea>
-    <input value="submit" name="submit" type="submit"/>
+    <input value="submit" name="submitcomment" type="submit"/>
 </form>
-
+<p>All Comments</p>
+<?php 
+$commentSelect = mysql_query("SELECT * FROM video_comment WHERE media_id=".$_GET['id']."");
+for($i = 0; $i < mysql_num_rows($commentSelect); $i++){
+	$commentRow = mysql_fetch_row($commentSelect);
+?>
+	<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;"><?php echo $commentRow[1] ?></span>
+	<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;"><?php echo $commentRow[4] ?></span>
+	<pre style="margin:0px;border: 1px solid black; background-color: white;"><span style="font-size:16px;font-family:Arial;"><?php echo $commentRow[3] ?></span></pre>
+   	<br>
+<?php } ?>
 <!--
     <object id="MediaPlayer" width=320 height=286 classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components…" type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
 

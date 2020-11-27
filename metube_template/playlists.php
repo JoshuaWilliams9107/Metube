@@ -22,7 +22,7 @@ if(isset($_POST['createPlaylist'])) {
 			$result = mysql_query("INSERT INTO playlist (playlistname,username) VALUES ('".$_POST['playlistname']."','".$_SESSION['username']."')");
 			if (!$result)
 			{
-	  			die ("createPlaylsit failed. Could not query the database: <br />". mysql_error());
+	  			die ("createPlaylist failed. Could not query the database: <br />". mysql_error());
 			}
 			$error_message="Playlist created.";
 		}
