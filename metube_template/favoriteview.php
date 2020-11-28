@@ -34,6 +34,7 @@ if(isset($_POST['logout'])) {
         {
 	?>
 	<center style="padding-top:20px;">
+        <?php $playlistinfo = mysql_fetch_row(mysql_query("SELECT * FROM playlist WHERE playlistid = '$result'")) ?>
 		<p>Playlist Name: <?php echo $playlistinfo[1]?></p>
 	</center>
 
