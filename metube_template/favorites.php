@@ -22,7 +22,7 @@ if(isset($_GET['playlist']) && !empty($_GET['playlist'])){
     $check = "SELECT * FROM favorite_table WHERE username = '$userID'";
     $result = mysql_query($check) or die("Selected from favorite_table" .mysql_error());
     $data = mysql_fetch_array($result, MYSQL_NUM);
-    if($data[0] > 1){
+    if($data[0] >= 1){
         $insertUFR = "UPDATE favorite_table SET playlist_id='".$play_id."' WHERE username='".$userID."')";
         $queryresult = mysql_query($insertUFR) 
             or die("Insert into media_to_favorites in favorite.php" .mysql_error());
