@@ -42,7 +42,7 @@ if(isset($_GET['keywords'])){
 
             <div class="result">
             <?php foreach($media_Arr as $r) ?>
-                <a href="#"><?php echo $r; ?> </a>     
+                <a href="#"><?php echo implode(', ', $r); ?> </a>     
             </div>
 <?php
 }
