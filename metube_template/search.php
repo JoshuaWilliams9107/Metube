@@ -41,7 +41,7 @@ if(isset($_GET['keywords'])){
 ?>
 
             <div class="result">
-            <?php foreach(array_unique($media_Arr) as $r) ?>
+            <?php foreach(array_unique($media_Arr, SORT_REGULAR) as $r) ?>
                 <a href="#"><?php echo $r; ?> </a>     
             </div>
 <?php
