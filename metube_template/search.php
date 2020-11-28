@@ -13,6 +13,7 @@ if(isset($_GET['keywords'])){
             FROM keyword_table
             WHERE keyword REGEXP '[[:<:]]{$word}[[:>:]]'
         ");
+        echo $key_id;
         $key_id = mysql_fetch_assoc($key_id);
         echo $key_id['keyword_id'];
         //$true_key_id = mysql_fetch_assoc($key_id);
