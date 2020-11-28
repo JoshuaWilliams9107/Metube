@@ -115,7 +115,7 @@ if(isset($_POST['friendDecision'])) {
 	$playlists = getPlaylists();
 	if($playlists){
         if($favorited == true)
-            echo "Updated!";
+            echo "Updated favorite list!";
 		for($i = 0; $i < count($playlists); $i++){?>
             <div style="overflow: hidden;">
 			<a href="/playlistview.php?playlistid=<?php echo $playlists[$i][0];?>"><?php echo $playlists[$i][1] ?></a>
