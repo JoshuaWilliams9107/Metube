@@ -38,7 +38,7 @@ if(isset($_GET['keywords'])){
             <?php
         }
    }
-    $media_Arr = array_unique($media_Arr, SORT_REGULAR);
+    //$media_Arr = array_unique($media_Arr, SORT_REGULAR);
 ?>
 
             <div class="result">
