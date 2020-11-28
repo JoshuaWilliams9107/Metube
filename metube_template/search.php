@@ -32,18 +32,19 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            $media_Arr[] = mysql_fetch_assoc($query); 
+            $media_Arr[] = mysql_fetch_row($query)[0]; 
             ?>
             <?php
         }
    }
-    $media_Arr = array_unique($media_Arr, SORT_REGULAR);
+   
 ?>
-
             <div class="result">
-            <?php foreach($media_Arr as $r) ?>
-                    <?php foreach($r as $media)?>
-                    <a href="#"><?php echo $media; ?> </a>     
+            <?php
+             $media_Arr = array_values(array_unique($media_Arr, SORT_REGULAR));
+             for($i = 0; $i < count($media_Arr); $i++){?>
+                    <a href="#"><?php echo $media_Arr[$i]; ?></a><br>  
+            <?php } ?>
             </div>
 <?php
 }
