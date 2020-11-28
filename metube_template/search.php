@@ -32,11 +32,12 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            $media_Arr[] =mysql_fetch_assoc($query); 
+            $media_Arr[] = fetchAllRows($query); 
             ?>
             <?php
         }
    }
+            $media_Arr[] = mysql_fetch_assoc($query);
     $media_Arr = array_unique($media_Arr, SORT_REGULAR);
 ?>
 
