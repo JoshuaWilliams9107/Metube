@@ -98,6 +98,7 @@ if(isset($_POST['logout'])) {
 		    </tr>
 		    </table>
 		</center>
-		</div>
-
+        <?php        
+        }
+        ?>
 </body>
