@@ -32,7 +32,7 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            $media_Arr[] = mysql_fetch_array($query);
+            $media_Arr[] = fetchAllRows($query);
             ?>
             <?php
         }
@@ -42,7 +42,7 @@ if(isset($_GET['keywords'])){
 
             <div class="result">
             <?php foreach($media_Arr as $r) ?>
-                <a href="#"><?php echo $r; ?> </a>     
+                <a href="#"><?php echo $r[0]; ?> </a>     
             </div>
 <?php
 }
