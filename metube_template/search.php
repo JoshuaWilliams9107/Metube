@@ -38,11 +38,10 @@ if(isset($_GET['keywords'])){
             <?php
         }
    }
-            $query = array_unique($media_Arr);
 ?>
 
             <div class="result">
-            <?php foreach($query as $r) ?>
+            <?php foreach(array_unique($media_Arr) as $r) ?>
                 <a href="#"><?php echo $r; ?> </a>     
             </div>
 <?php
