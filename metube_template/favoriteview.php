@@ -24,7 +24,7 @@ if(isset($_POST['logout'])) {
 	</ul>
 
 	<?php 
-		$check = mysql_query("SELECT playlist_id FROM favorite_table WHERE username=".$_SESSION['username'].""));
+		$check = mysql_query("SELECT playlist_id FROM favorite_table WHERE username=".$_SESSION['username']."");
         $result = mysql_query($check) or die("Selected from favorite_table" .mysql_error());
         $data = mysql_fetch_array($result, MYSQL_NUM);
         if($data[0] < 1){
