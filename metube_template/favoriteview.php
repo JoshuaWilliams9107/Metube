@@ -34,7 +34,7 @@ if(isset($_POST['logout'])) {
         {
 	?>
 	<center style="padding-top:20px;">
-        <?php $playlistinfo = mysql_fetch_row(mysql_query("SELECT * FROM playlist WHERE playlistid = '$result'")); ?>
+        <?php $playlistinfo = mysql_fetch_row(mysql_query("SELECT * FROM playlist WHERE playlistid = '".$data['playlist_id']."'")); ?>
 		<p>Playlist Name: <?php echo $playlistinfo[1]?></p>
 	</center>
 
@@ -46,7 +46,7 @@ if(isset($_POST['logout'])) {
 			<?php
 		    
 			$rowSize=3;
-			$playlistquery = mysql_query("SELECT * FROM playlist_to_media WHERE playlistid='$result'");
+			$playlistquery = mysql_query("SELECT * FROM playlist_to_media WHERE playlistid='".$data['playlist_id']."'");
 			if(mysql_num_rows($playlistquery) == 0){
 				echo "<p style='font-size:20px;'>This playlist has no media</p>";
 			}
