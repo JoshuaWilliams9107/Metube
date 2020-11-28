@@ -23,10 +23,10 @@ if(isset($_GET['playlist']) && !empty($_GET['playlist'])){
     $result = mysql_query($check) or die("Selected from favorite_table" .mysql_error());
     $data = mysql_fetch_array($result, MYSQL_NUM);
     if($data[0] >= 1){
-        $insertUFR = "UPDATE favorite_table SET playlist_id='".$play_id."' WHERE username='".$userID."')";
-        $queryresult = mysql_query($insertUFR) 
-            or die("Insert into media_to_favorites in favorite.php" .mysql_error());
+        $insertUFR = "UPDATE favorite_table SET playlist_id='$play_id' WHERE username='$userID')";
         echo "Updated!";
+        $queryresult = mysql_query($insertUFR) 
+            or die("Update into media_to_favorites in favorite.php" .mysql_error());
         }
     else{    
         $insertF = "INSERT into favorite_table(username, playlist_id) VALUES('$userID', '$play_id')";
