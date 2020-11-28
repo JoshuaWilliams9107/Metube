@@ -32,8 +32,8 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            //$query_file = mysql_fetch_assoc($query);
-            array_push($media_Arr, $query);
+            $query_file = mysql_fetch_assoc($query);
+            array_push($media_Arr, $query_file);
             ?>
             <?php
         }
