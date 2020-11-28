@@ -30,7 +30,7 @@ if(isset($_POST['createPlaylist'])) {
 }
 
 $userID=$_SESSION['username'];
-
+$favorited = false;
 if(isset($_GET['playlist'])){
 $playlist=$_GET['playlist'];
 $query = "SELECT playlistid FROM  playlist WHERE playlistname = '".$playlist."'";
@@ -44,7 +44,6 @@ if(isset($_GET['playlist']) && !empty($_GET['playlist'])){
     $data = mysql_fetch_array($result, MYSQL_NUM);
     if($data[0] >= 1){
         $insertUFR = "UPDATE favorite_table SET playlist_id='$play_id' WHERE username='$userID'";
-        echo "Updated!";
         $queryresult = mysql_query($insertUFR) 
             or die("Update into media_to_favorites in favorite.php" .mysql_error());
         }
@@ -53,6 +52,7 @@ if(isset($_GET['playlist']) && !empty($_GET['playlist'])){
         $queryresult = mysql_query($insertF)
             or die("Insert into favorite_table in favorite.php" .mysql_error());
         }
+    $favorited = true;
     }
 }
 
@@ -114,6 +114,8 @@ if(isset($_POST['friendDecision'])) {
 	<?php
 	$playlists = getPlaylists();
 	if($playlists){
+        if($favorited == true)
+            echo "Updated!";
 		for($i = 0; $i < count($playlists); $i++){?>
             <div style="overflow: hidden;">
 			<a href="/playlistview.php?playlistid=<?php echo $playlists[$i][0];?>"><?php echo $playlists[$i][1] ?></a>
