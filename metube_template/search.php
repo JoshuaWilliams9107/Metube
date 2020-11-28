@@ -32,8 +32,8 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            //$query_file = mysql_fetch_assoc($query);
-            $media_Arr[] = array(mysql_fetch_assoc($query));
+            $query_file = mysql_fetch_assoc($query);
+            $media_Arr[] = array($query_file['filename']);
             ?>
             <?php
         }
@@ -41,7 +41,7 @@ if(isset($_GET['keywords'])){
 ?>
 
             <div class="result">
-            <?php foreach(array_unique($media_Arr['filename']) as $r) ?>
+            <?php foreach(array_unique($media_Arr) as $r) ?>
                 <a href="#"><?php echo $r; ?> </a>     
             </div>
 <?php
