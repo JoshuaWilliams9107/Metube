@@ -88,13 +88,17 @@ if(isset($_POST['friendDecision'])) {
 	$playlists = getPlaylists();
 	if($playlists){
 		for($i = 0; $i < count($playlists); $i++){?>
-            <p syle="display:inline">
+            <div style="overflow: hidden;">
+            <p style="float: left;">
 			<a href="/playlistview.php?playlistid=<?php echo $playlists[$i][0];?>"><?php echo $playlists[$i][1] ?></a>
+            </p>
+            <p style "float: right;">
             <form action="favorites.php" method="get" id="favorite">
                 <input type="hidden" id="playlist" name="playlist" value="<?php echo $playlists[$i][1]; ?>">
                 <input type="submit" value="Favorite">
             </form>
             </p>
+            </div>
             <br>
 		<?php }
 	}
