@@ -32,7 +32,7 @@ if(isset($_GET['keywords'])){
             WHERE mediaid = '".$id[0]."'");
             ?>
             <?php
-            $media_Arr[] = fetchAllRows($query); 
+            $media_Arr[] =mysql_fetch_assoc($query); 
             ?>
             <?php
         }
