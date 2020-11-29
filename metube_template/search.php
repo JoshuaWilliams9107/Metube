@@ -16,9 +16,9 @@ if(isset($_GET['keywords'])){
         $key = mysql_fetch_assoc($key_id);
         $check = mysql_fetch_array($key_id, MYSQL_NUM);
         //$true_key_id = mysql_fetch_assoc($key_id);
-        echo $key['keyword_id'];
         
         if($check[0] >= 1){
+        echo $key['keyword_id'];
         $media_id = mysql_query("
             SELECT media_id
             FROM media_to_keywords
