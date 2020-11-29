@@ -15,6 +15,7 @@ if(isset($_GET['keywords'])){
         ");
         $key_id = mysql_fetch_assoc($key_id);
         //$true_key_id = mysql_fetch_assoc($key_id);
+        echo $key_id['keyword_id'];
     
         $media_id = mysql_query("
             SELECT media_id
