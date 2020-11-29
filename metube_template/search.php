@@ -11,7 +11,7 @@ if(isset($_GET['keywords'])){
         $key_id = mysql_query("
             SELECT keyword_id
             FROM keyword_table
-            WHERE keyword RLIKE '^{$word}'
+            WHERE keyword RLIKE '[[:<:]]{$word}'
         ");
         $key = mysql_fetch_assoc($key_id);
         echo $key['keyword_id'];
