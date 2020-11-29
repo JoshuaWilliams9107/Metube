@@ -14,7 +14,6 @@ if(isset($_GET['keywords'])){
             WHERE keyword REGEXP '[[:<:]]{$word}'
         ");
         $key_id = mysql_fetch_assoc($key_id);
-        echo $key_id[0];
         //$true_key_id = mysql_fetch_assoc($key_id);
     
         $media_id = mysql_query("
