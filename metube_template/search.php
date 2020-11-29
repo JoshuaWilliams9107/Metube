@@ -14,11 +14,11 @@ if(isset($_GET['keywords'])){
             WHERE keyword RLIKE '^{$word}'
         ");
         $key = mysql_fetch_assoc($key_id);
+        echo $key['keyword_id'];
         //$check = mysql_fetch_array($key_id, MYSQL_NUM);
         //$true_key_id = mysql_fetch_assoc($key_id);
         
         if($key['keyword_id'] >= 1){
-        echo $key['keyword_id'];
         $media_id = mysql_query("
             SELECT media_id
             FROM media_to_keywords
