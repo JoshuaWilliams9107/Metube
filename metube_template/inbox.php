@@ -16,6 +16,7 @@ if(isset($_POST['logout'])) {
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a></li>
+      <li><a id="floatleft" href='./favoriteview.php'>Favorite playlist</a></li>
 	  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
 	  <li><a id="floatleft" class="active" href='./inbox.php'>Inbox</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">

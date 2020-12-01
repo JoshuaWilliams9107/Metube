@@ -79,6 +79,7 @@ $username = $accountInfo[0];
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
 	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a></li>
+      <li><a id="floatleft" href='./favoriteview.php'>Favorite playlist</a></li>
 	  <li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
 	  <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
 	  <form action="<?php echo "home.php";?>" method="post">
