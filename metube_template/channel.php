@@ -105,7 +105,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 						<?php
 						}
 						 echo "<p>".$result_row[4]."</p>";
-						 echo "<a href='./editmedia.php?mediaid=".$result_row[0]."'>Edit Media Settings</a>";?>
+						 echo "<a href='./editmedia.php?id=".$result_row[0]."'>Edit Media Settings</a>";?>
 						 <br><br>
 						 </a>
 						</center>
