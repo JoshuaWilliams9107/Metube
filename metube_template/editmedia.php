@@ -76,9 +76,7 @@ if(isset($_GET['id'])) {
 	$type=$result_row[3];
 	if(substr($type,0,5)=="image") //view image
 	{
-		echo "Viewing Picture:";
-		echo $result_row[2].$result_row[1];
-		echo " <br><img src='".$filepath.$filename."'/>";
+		echo "<center><br><img src='".$filepath.$filename."'/></center>";
 	}
 	else //view movie
 	{	
