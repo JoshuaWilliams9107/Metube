@@ -8,36 +8,51 @@ if(isset($_GET['keywords'])){
     $keywords = explode(' ', $keywords);
     $media_Arr = array();
    foreach($keywords as $word){ 
-        $key_id = mysql_query("
-            SELECT keyword_id
+        $keyword_query = mysql_query("
+            SELECT *
             FROM keyword_table
-            WHERE keyword RLIKE '[[:<:]]{$word}'
+            WHERE keyword LIKE '{$word[0]}%'
         ");
-        $key = mysql_fetch_assoc($key_id);
-        echo $key['keyword_id'];
-        //$check = mysql_fetch_array($key_id, MYSQL_NUM);
-        //$true_key_id = mysql_fetch_assoc($key_id);
-        
-        if($key['keyword_id'] >= 1){
-        $media_id = mysql_query("
-            SELECT media_id
-            FROM media_to_keywords
-            WHERE keyword_id = '".$key['keyword_id']."'");
-        
-        //$media_ids = array();    
-        $true_media_id = fetchAllRows($media_id);
-        foreach($true_media_id as $id){
- 
-            $query = mysql_query("
-            SELECT filename
-            FROM media
-            WHERE mediaid = '".$id[0]."'");
-            ?>
-            <?php
-            $media_Arr[] = mysql_fetch_row($query)[0]; 
-            ?>
-            <?php
+        $max = -99999;
+        $keywordIndex = -9;
+        $key_id = -9;
+        for($i = 0; $i < mysql_num_rows($keyword_query);$i++){
+        	$keywordCompare = mysql_fetch_row($keyword_query);
+        	similar_text($keywordCompare[1],$word,$percent);
+        	if($percent > $max){
+        		$max = $percent;
+        		$keywordIndex = $i;
+        		$key_id = $keywordCompare;
+        	}
         }
+        echo $max;
+        if($keywordIndex >= 0 && $max >= 80 && $key_id >= 0){
+	        $key = $key_id;
+	        echo $key[0];
+	        //$check = mysql_fetch_array($key_id, MYSQL_NUM);
+	        //$true_key_id = mysql_fetch_assoc($key_id);
+	        
+	        if($key[0] >= 1){
+	        $media_id = mysql_query("
+	            SELECT media_id
+	            FROM media_to_keywords
+	            WHERE keyword_id = '".$key[0]."'");
+	        
+	        //$media_ids = array();    
+	        $true_media_id = fetchAllRows($media_id);
+	        foreach($true_media_id as $id){
+	 
+	            $query = mysql_query("
+	            SELECT filename
+	            FROM media
+	            WHERE mediaid = '".$id[0]."'");
+	            ?>
+	            <?php
+	            $media_Arr[] = mysql_fetch_row($query)[0]; 
+	            ?>
+	            <?php
+	        }
+	        }
         }
    }
    
