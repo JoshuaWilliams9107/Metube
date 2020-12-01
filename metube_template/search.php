@@ -25,7 +25,7 @@ if(isset($_GET['keywords'])){
         		$key_id = $keywordCompare;
         	}
         }
-        echo $max;
+        
         if($keywordIndex >= 0 && $max >= 80 && $key_id >= 0){
 	        $key = $key_id;
 	        echo $key[0];
