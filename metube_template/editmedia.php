@@ -143,7 +143,7 @@ $description = "SELECT `description` FROM `media` WHERE filename ='" .$result_ro
 $result = mysql_query($description);
 $vid_desc = mysql_fetch_assoc($result);
 ?>
-<p><b>Edit Description:</b><br> <textarea type="text" rows="4" cols="30" value="<?php echo $vid_desc['description']; ?>"></textarea></p>
+<p><b>Edit Description:</b><br> <textarea type="text" rows="4" cols="30"><?php echo $vid_desc['description'];?></textarea></p>
 <button>Submit Description Change</button>    <br>
 <button>Delete Video</button>    
 </center>
