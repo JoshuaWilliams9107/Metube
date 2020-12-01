@@ -99,14 +99,14 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 						<?php }else if(!is_null($result_row[9])){?>
 						<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
 						 alt="thumbnail" width=250px height=150px/> <br>
-
 						<?php }else{?>
 						<img src="uploads/metube/BlankVideo.png"
 						 alt="blank user image" width=250px height=150px/> <br>
-
 						<?php
 						}
-						 echo "<p>".$result_row[4]."</p>";?>
+						 echo "<p>".$result_row[4]."</p>";
+						 echo "<a href='./editmedia.php?mediaid=".$result_row[0]."'>Edit Media Settings</a>";?>
+						 <br><br>
 						 </a>
 						</center>
 						</td>
