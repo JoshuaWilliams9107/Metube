@@ -11,7 +11,6 @@ if(isset($_POST['logout'])) {
 	header('Location: index.php');
 }
 if(isset($_POST['deleteMessage'])){
-	echo "DELETE FROM message WHERE messageid=".$_POST['messageid'].";";
 	mysql_query("DELETE FROM message WHERE messageid=".$_POST['messageid'].";");
 	unset($_POST['deleteMessage']);
 }

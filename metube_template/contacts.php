@@ -38,6 +38,11 @@ if(isset($_POST['friendDecision'])) {
 	
 }
 
+if(isset($_POST['removeContact'])){
+	mysql_query("DELETE FROM contacts WHERE contactsID=".$_POST['contactsID'].";");
+	unset($_POST['removeContact']);
+}
+
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
@@ -94,7 +99,15 @@ if(isset($_POST['friendDecision'])) {
 					echo "<a href='/channel.php?username=".$contacts[$i][2]."' style='display:inline;'>".$contacts[$i][2]."</a>";
 					echo "<p style='display:inline;'> Request Pending</p><br>";
 				}else{
-					echo "<a href='/channel.php?username=".$contacts[$i][2]."'>".$contacts[$i][2]."</a><br>";
+					?>
+					<form style="padding:0px; margin:0px;" method="POST" action="./contacts.php">
+						<?php
+					echo "<a href='/channel.php?username=".$contacts[$i][2]."'>".$contacts[$i][2]."</a>";
+					?>
+							<input type="hidden" name="contactsID" value="<?php echo $contacts[$i][0]?>"/>
+							<input style="font-size:12px" type="submit" value="Remove Contact" name="removeContact"/>
+						</form>
+					<?php
 				}
 				
 			}else{
@@ -109,7 +122,16 @@ if(isset($_POST['friendDecision'])) {
 					<br>
 					<?php
 				}else{
-					echo "<a href='/channel.php?username=".$contacts[$i][1]."'>".$contacts[$i][1]."</a><br>";
+					?>
+					<form style="padding:0px; margin:0px;" method="POST" action="./contacts.php">
+						<?php
+					echo "<a href='/channel.php?username=".$contacts[$i][1]."'>".$contacts[$i][1]."</a>";
+					?>
+						
+							<input type="hidden" name="contactsID" value="<?php echo $contacts[$i][0]?>"/>
+							<input style="font-size:12px"  type="submit" value="Remove Contact" name="removeContact"/>
+						</form>
+					<?php
 				}
 				
 			}
