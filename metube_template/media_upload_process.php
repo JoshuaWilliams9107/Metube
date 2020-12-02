@@ -24,8 +24,8 @@ if(!file_exists($dirfile))
     { $result=$_FILES["file"]["error"];} //error from 1-4
     else
     {
-      $dirfile.urlencode($_FILES["file"]["name"]) =  $dirfile.urlencode(time() . '_' . rand(100, 999) . '.' . end(explode(".", $_FILES["file"]["name"]))); 
-      $upfile = $dirfile.urlencode($_FILES["file"]["name"]);
+      $rand_file = time() . '_' . rand(100, 999) . '.' . end(explode(".", $_FILES["file"]["name"]));
+      $upfile = $dirfile.urlencode($rand_file);
       
       if(file_exists($upfile))
       {
@@ -45,7 +45,7 @@ if(!file_exists($dirfile))
 
                                 $insert = "INSERT into media(
                                     mediaid,filename,filepath,type,title,description,category)
-                                    VALUES(NULL, '".$upfile."', '".$dirfile."',
+                                    VALUES(NULL, '".$rand_file."', '".$dirfile."',
                                     '".$_FILES["file"]["type"]."','".mysql_real_escape_string($_POST["title"])."',
                                     '".mysql_real_escape_string($_POST["description"])."','".$_POST["category"]."')";
                     $queryresult = mysql_query($insert)
