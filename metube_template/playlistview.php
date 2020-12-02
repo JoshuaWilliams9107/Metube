@@ -10,6 +10,7 @@ if(isset($_POST['logout'])) {
 	$_SESSION['username'] = "";
 	header('Location: index.php');
 }
+parse_str($_SERVER['QUERY_STRING'], $query_string);
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
@@ -28,7 +29,7 @@ if(isset($_POST['logout'])) {
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
 				<?php
-				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
+				$user = mysql_query("SELECT * FROM account WHERE username='".$_GET['username']."'");
 				$userRow = mysql_fetch_row($user);
 				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
 				echo "<p style=''>$userRow[4] $userRow[5]</p><br>";
@@ -37,11 +38,24 @@ if(isset($_POST['logout'])) {
 		</div>
 		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<ul>
+			<?php if($_SESSION['username'] == $query_string['username']){?>
+				<ul>
 				  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
-				  <li><a id="floatleft" class="active" href="./playlists.php">Playlists</a></li>
+				  <li><a id="floatleft" class="active" href="./playlists.php?username=<?php echo $query_string['username']?>">Playlists</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
+			<?php }else{ ?>
+				<ul>
+					<li>
+						<a id="floatleft" href="./channel.php?username=<?php echo $query_string['username']?>">
+						Uploaded Media</a>
+						<a id="floatleft"  class="active" href="./playlists.php?username=<?php echo $query_string['username']?>">
+						Playlists</a>
+					</li>
+				</ul>
+			<?php } ?>
+			</ul>
 	<?php 
 		$playlistinfo = mysql_fetch_row(mysql_query("SELECT * FROM playlist WHERE playlistid=".$_GET['playlistid'].""));
 	?>
@@ -105,11 +119,12 @@ if(isset($_POST['logout'])) {
 						}
 						 echo "<p>".$result_row[4]."</p>";?>
 						 </a>
+						<?php if($_SESSION['username'] == $playlistinfo[2]){?>
 						<form method="post" action="<?php echo "playlistviewbackend.php?playlistid=".$_GET['playlistid']."";?>">
 							<input type="hidden" name="videoid" value="<?php echo $result_row[0];?>">
 							<input type="submit" value="Remove from playlist" name="removeMedia"/>
 						</form>
-
+						<?php }?>
 						</form>
 						</center>
 						</td>

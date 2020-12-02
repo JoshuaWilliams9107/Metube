@@ -28,7 +28,7 @@ if(isset($_POST['createPlaylist'])) {
 		}
 	}	
 }
-
+parse_str($_SERVER['QUERY_STRING'], $query_string);
 $userID=$_SESSION['username'];
 $favorited = false;
 if(isset($_GET['playlist'])){
@@ -56,15 +56,6 @@ if(isset($_GET['playlist']) && !empty($_GET['playlist'])){
     }
 }
 
-if(isset($_POST['friendDecision'])) {
-	if($_POST['friendDecision'] == "Accept"){
-		$result = mysql_query("UPDATE contacts SET status=1 WHERE sender='".$_POST['sender']."' AND recipient='".$_SESSION['username']."'");
-	} else {
-		$result = mysql_query("DELETE FROM contacts WHERE sender='".$_POST['sender']."' AND recipient='".$_SESSION['username']."'");
-	}
-	
-}
-
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
@@ -83,7 +74,7 @@ if(isset($_POST['friendDecision'])) {
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
 				<?php
-				$user = mysql_query("SELECT * FROM account WHERE username='".$_SESSION['username']."'");
+				$user = mysql_query("SELECT * FROM account WHERE username='".$_GET['username']."'");
 				$userRow = mysql_fetch_row($user);
 				echo "<p style='font-size:40px;font-weight:bold;float:left;vertical-align:top;'>$userRow[0]</p>";
 				echo "<p style=''>$userRow[4] $userRow[5]</p><br>";
@@ -92,17 +83,32 @@ if(isset($_POST['friendDecision'])) {
 		</div>
 		<div style="margin-left:200px;margin-right:200px;padding-top:70px;background-color:#E1E1E1;">
 			<ul>
+			<?php if($_SESSION['username'] == $query_string['username']){?>
+				<ul>
 				  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
-				  <li><a id="floatleft" class="active" href="./playlists.php">Playlists</a></li>
+				  <li><a id="floatleft" class="active" href="./playlists.php?username=<?php echo $query_string['username']?>">Playlists</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
-			<!--Contacts Code-->
+			<?php }else{ ?>
+				<ul>
+					<li>
+						<a id="floatleft" href="./channel.php?username=<?php echo $query_string['username']?>">
+						Uploaded Media</a>
+						<a id="floatleft"  class="active" href="./playlists.php?username=<?php echo $query_string['username']?>">
+						Playlists</a>
+					</li>
+				</ul>
+			<?php } ?>
+			</ul>
+
 			<center style="padding-top:100px;">
-		<form method="post" action="<?php echo "playlists.php"; ?>">
-			<input type="text" name="playlistname" placeholder="Playlist Name"/>
-			<input type="submit" value="Create Playlist" name="createPlaylist"/>
-		</form>
+			<?php if($_SESSION['username'] == $query_string['username']){?>
+				<form method="post" action="./playlists.php?username=<?php echo $query_string['username']?>">
+					<input type="text" name="playlistname" placeholder="Playlist Name"/>
+					<input type="submit" value="Create Playlist" name="createPlaylist"/>
+				</form>
+			<?php }?>
 	</center>
 
 
@@ -119,11 +125,14 @@ if(isset($_POST['friendDecision'])) {
             echo "Updated favorite list!";
 		for($i = 0; $i < count($playlists); $i++){?>
             <div style="overflow: hidden;">
-			<a href="/playlistview.php?playlistid=<?php echo $playlists[$i][0];?>"><?php echo $playlists[$i][1] ?></a>
-            <form action="<?php echo "playlists.php"; ?>" method="get" id="favorite">
+			<a href="./playlistview.php?playlistid=<?php echo $playlists[$i][0];?>&username=<?php echo $_GET['username']?>"><?php echo $playlists[$i][1] ?></a>
+			<?php if($_SESSION['username'] == $query_string['username']){?>
+            <form action="./playlists.php" method="get" id="favorite">
                 <input type="hidden" id="playlist" name="playlist" value="<?php echo $playlists[$i][1]; ?>">
+                <input type="hidden" id="username" name="username" value="<?php echo $query_string['username'];?>">
                 <input type="submit" value="Favorite">
             </form>
+        	<?php }?>
             </div>
             <br>
 		<?php }

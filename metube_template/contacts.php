@@ -67,7 +67,7 @@ if(isset($_POST['friendDecision'])) {
 			<ul>
 			  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 			  <li><a id="floatleft" class="active" href="./contacts.php">Contacts</a></li>
-			  <li><a id="floatleft" href="./playlists.php">Playlists</a></li>
+			  <li><a id="floatleft" href="./playlists.php?username=<?php echo $_SESSION['username']?>">Playlists</a></li>
 			  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 			</ul>
 			<!--Contacts Code-->

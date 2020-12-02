@@ -50,7 +50,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 				<ul>
 				  <li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Uploads</a></li>
 				  <li><a id="floatleft" href="./contacts.php">Contacts</a></li>
-				  <li><a id="floatleft" href="./playlists.php">Playlists</a></li>
+				  <li><a id="floatleft" href="./playlists.php?username=<?php echo $_SESSION['username']?>">Playlists</a></li>
 				  <li><a id="floatleft" href="./profilesettings.php">Profile Settings</a></li>
 				</ul>
 			<?php }else{ ?>
@@ -58,8 +58,8 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 					<li>
 						<a id="floatleft" class="active" href="./channel.php?username=<?php echo $query_string['username']?>">
 						Uploaded Media</a>
-						<a id="floatleft" href="./message.php?username=<?php echo $query_string['username']?>">
-						Send User Message</a>
+						<a id="floatleft" href="./playlists.php?username=<?php echo $query_string['username']?>">
+						Playlists</a>
 					</li>
 				</ul>
 			<?php } ?>
