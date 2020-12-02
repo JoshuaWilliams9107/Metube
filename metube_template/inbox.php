@@ -10,6 +10,11 @@ if(isset($_POST['logout'])) {
 	$_SESSION['username'] = "";
 	header('Location: index.php');
 }
+if(isset($_POST['deleteMessage'])){
+	echo "DELETE FROM message WHERE messageid=".$_POST['messageid'].";";
+	mysql_query("DELETE FROM message WHERE messageid=".$_POST['messageid'].";");
+	unset($_POST['deleteMessage']);
+}
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
@@ -35,6 +40,7 @@ if(isset($_POST['logout'])) {
 						<th style="border: 1px solid black;">Sender</th>
 						<th style="border: 1px solid black;">Recipient</th>
 						<th style="border: 1px solid black;">Subject</th>
+						<th style="border: 1px solid black;">Delete</th>
 					</tr>
 				<?php
 				$messageResult = mysql_query("SELECT * FROM message WHERE sender='".$_SESSION['username']."' OR recipient='".$_SESSION['username']."'");
@@ -45,6 +51,14 @@ if(isset($_POST['logout'])) {
 						<td style="border: 1px solid black;"><?php echo $messageRow[1] ?></td>
 						<td style="border: 1px solid black;"><?php echo $messageRow[2] ?></td>
 						<td style="border: 1px solid black;"><a href="/viewmessage.php?messageid=<?php echo $messageRow[0]?>"><?php echo $messageRow[4] ?></a></td>
+						<td style="border: 1px solid black;">
+							<form style="padding:0px; margin:0px;" method="POST" action="./inbox.php">
+								<input type="hidden" name="messageid" value="<?php echo $messageRow[0]?>"/>
+								<input type="submit" value="Delete Message" name="deleteMessage"/>
+							</form>
+
+
+						</td>
 					</tr>
 
 				<?php }?>
