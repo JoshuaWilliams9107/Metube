@@ -1,39 +1,38 @@
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <!DOCTYPE html>
 <?php
 	session_start();
 	include_once "function.php";
 	include_once "logincheck.php";
-
-
-	if(isset($_POST['addtoplaylist'])) {
-		//add media to database
-		$checkPlaylist = mysql_query("SELECT * FROM playlist_to_media WHERE playlistid='".$_POST['playlistname']."' AND mediaid='".$_GET['id']."';");
-		if(mysql_num_rows($checkPlaylist) != 0){
-			$error_message = "This media is already in that playlist";
-		}else{
-			$result = mysql_query("INSERT INTO playlist_to_media (playlistid,mediaid) VALUES ('".$_POST['playlistname']."','".$_GET['id']."');");
-			if (!$result)
-			{
-		  		die ("addToPlaylist failed. Could not query the database: <br />". mysql_error());
-			}
-			$error_message = "Media added to playlist";
-		}
+	if(isset($_POST['logout'])) {
+		$_SESSION['username'] = "";
+		header('Location: index.php');
 	}
-	if(isset($_POST['submitcomment'])) {
-		if($_POST['comment'] ==""){
-			$error_message = "Comment cannot be blank";
-		}else{
-			$date = date('Y-m-d H:i:s');
-			$insertcomment = "INSERT INTO video_comment (username,media_id,comment,Time_stamp) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".santitize($_POST['comment'])."','".$date."');";
-			$result = mysql_query($insertcomment);
-			if (!$result)
-			{
-	  			die ("Comment failed. Could not query the database: <br />". mysql_error());
-			}
-			$error_message = "Comment Created";
-		}
-	}
+	if(isset($_POST['changeTitle'])) {
 
+		if($_POST['newTile'] != ""){
+			mysql_query("UPDATE media SET title='".$_POST['newTile']."' WHERE mediaid=".$_GET['id'].";");
+			
+		}else{
+			$update_error = "Title cannot be blank";
+		}
+		unset($_POST['changefirstname']);
+	}
+	if(isset($_POST['changeDescription'])) {
+		if($_POST['newDescription'] != ""){
+			mysql_query("UPDATE media SET description='".$_POST['newDescription']."' WHERE mediaid=".$_GET['id'].";");
+			
+		}else{
+			$update_error = "Description cannot be blank";
+		}
+		unset($_POST['changefirstname']);
+	}
+	if(isset($_POST['deleteVideo'])) {
+		
+		unset($_POST['deleteVideo']);
+	}
+	
 ?>	
 <html>
 <head>
@@ -60,9 +59,13 @@
 	  </form>
 </ul>
 <?php
-	if(isset($error_message))
-	{  echo "<div id='passwd_result'>".$error_message."</div>";}
-	?>
+if(isset($_GET['descERR']))
+	$update_error = "Description cannot be blank";
+if(isset($_GET['titleERR']))
+	$update_error = "Title cannot be blank";
+  if(isset($update_error))
+   {  echo "<div id='passwd_result'>".$update_error."</div><br>";}
+?>
 <?php
 if(isset($_GET['id'])) {
 	$query = "SELECT * FROM media WHERE mediaid='".$_GET['id']."'";
@@ -112,8 +115,14 @@ $vid_title = mysql_fetch_assoc($result);
 <p>
 <center>
 <a href="<?php echo $result_row[2].$result_row[1];?>" download> Download </a><br>
-<b>Edit Title</b>: <input value="<?php echo $vid_title['title'];?>">
-<button>Submit Title Change</button> 
+
+<form method="post" action="<?php echo "editmediabackend.php?id=".$_GET['id']."";?>">
+
+	<b>Edit Title</b>: 
+	<input type="text" name="newTile" value="<?php echo $vid_title['title'];?>">
+	<input type="submit" value="Update Title" name="changeTitle"/>
+</form>
+
 <br>
 
 <?php 
@@ -128,12 +137,7 @@ if(mysql_num_rows($playlistResult) != 0){
 	<?php
 }
 ?>
-<!--
-<form action="favorites.php" method="get" id="favorite">
-    <input type="hidden" id="filename" name="filename" value ="<?php echo $result_row[1]; ?>">
-    <input type="submit" value="Favorite">
-</form>
--->
+
 </p>
 
 <?php
@@ -141,22 +145,19 @@ $description = "SELECT `description` FROM `media` WHERE filename ='" .$result_ro
 $result = mysql_query($description);
 $vid_desc = mysql_fetch_assoc($result);
 ?>
-<p><b>Edit Description:</b><br> <textarea type="text" rows="4" cols="30"><?php echo $vid_desc['description'];?></textarea></p>
-<button>Submit Description Change</button>    <br>
-<button>Delete Video</button>    
+
+<form method="post" action="<?php echo "editmediabackend.php?id=".$_GET['id']."";?>">
+<p><b>Edit Description:</b><br> <textarea type="text" name="newDescription" rows="4" cols="30"><?php echo $vid_desc['description'];?></textarea></p>
+
+<input type="submit" value="Update Description" name="changeDescription"/>
+</form>
+
+<br>
+<form method="post" action="<?php echo "editmediabackend.php?id=".$_GET['id']."";?>">
+<input type="submit" value="Delete Video" name="deleteVideo"/>
+</form>
 </center>
 
-<!--
-    <object id="MediaPlayer" width=320 height=286 classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components…" type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
-
-<param name="filename" value="<?php echo $result_row[2].$result_row[1];  ?>">
-<param name="Showcontrols" value="True">
-<param name="autoStart" value="True">
-
-<embed type="application/x-mplayer2" src="<?php echo $result_row[2].$result_row[1];  ?>" name="MediaPlayer" width=320 height=240></embed>
-
-</object>
--->
           
 <?php
 	
@@ -164,7 +165,7 @@ $vid_desc = mysql_fetch_assoc($result);
 else
 {
 ?>
-<meta http-equiv="refresh" content="0;url=browse.php">
+
 <?php
 }
 ?>

@@ -27,7 +27,12 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
 	</ul>
-
+	<?php
+		if(isset($_GET['videoDelete']))
+			$message = "Video Deleted";
+		  if(isset($update_error))
+		   {  echo "<div id='passwd_result'>".$message."</div><br>";}
+	?>
 		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
 			<img style="float:left;margin-left:100px;border: 5px solid black;"src="uploads/metube/blank.png" alt="blank user image" width=200px height=200px/> 
 			<div style="display:inline-block;margin-left:20px;">
@@ -67,10 +72,14 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 			$rowSize=3;
 			
 			$uploaderquery = mysql_query("SELECT * FROM upload WHERE username='".$query_string['username']."';");
+
 			if(mysql_num_rows($uploaderquery) == 0){
 				echo "<p style='font-size:20px;'>This channel has no uploaded media</p>";
 			}
 			for($i=0; $i<mysql_num_rows($uploaderquery);$i++){
+				
+				
+
 				$uploaderinformation = mysql_fetch_row($uploaderquery);
 				$query = "SELECT * from media WHERE mediaid=".$uploaderinformation[2].";"; 
 				$result = mysql_query( $query );
@@ -84,7 +93,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 				if($result_row = mysql_fetch_row($result)){
 					?>
 					<?php
-					 if($i % $rowSize == 0){ 
+				if($i % $rowSize == 0 && $i != 0){ 
 						?>
 						</tr>
 						<tr>
@@ -112,12 +121,10 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 						</center>
 						</td>
 					<?php
-				}else{
-					break;
 				}
 			}
 			?>
-		    </tr>
+
 		    </table>
 		</center>
 		</div>
