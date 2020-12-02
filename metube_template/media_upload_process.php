@@ -44,7 +44,7 @@ if(!file_exists($dirfile))
 
                                 $insert = "INSERT into media(
                                     mediaid,filename,filepath,type,title,description,category)
-                                    VALUES(NULL, '".urlencode($_FILES["file"]["name"])."', '".$dirfile."',
+                                    VALUES(NULL, '".$upfile."', '".$dirfile."',
                                     '".$_FILES["file"]["type"]."','".mysql_real_escape_string($_POST["title"])."',
                                     '".mysql_real_escape_string($_POST["description"])."','".$_POST["category"]."')";
                     $queryresult = mysql_query($insert)
