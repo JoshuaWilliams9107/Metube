@@ -10,34 +10,6 @@ if(isset($_POST['logout'])) {
 	$_SESSION['username'] = "";
 	header('Location: index.php');
 }
-if(isset($_POST['createPlaylist'])) {
-	if($_POST['playlistname'] == ""){
-		$error_message="Playlist Name cannot be blank";
-	}else{
-		$check_result = mysql_query("SELECT * FROM  playlist WHERE playlistname='".$_POST['playlistname']."' AND username='".$_SESSION['username']."';");
-		if(mysql_num_rows($check_result) != 0){
-			$error_message="You already have a playlist by that name.";
-		}else{
-			//make the playlist
-			$result = mysql_query("INSERT INTO playlist (playlistname,username) VALUES ('".$_POST['playlistname']."','".$_SESSION['username']."')");
-			if (!$result)
-			{
-	  			die ("createPlaylsit failed. Could not query the database: <br />". mysql_error());
-			}
-			$error_message="Playlist created.";
-		}
-	}	
-}
-
-if(isset($_POST['friendDecision'])) {
-	if($_POST['friendDecision'] == "Accept"){
-		$result = mysql_query("UPDATE contacts SET status=1 WHERE sender='".$_POST['sender']."' AND recipient='".$_SESSION['username']."'");
-	} else {
-		$result = mysql_query("DELETE FROM contacts WHERE sender='".$_POST['sender']."' AND recipient='".$_SESSION['username']."'");
-	}
-	
-}
-
 ?>
 <body style="padding:0;margin:0;">
 	<ul>
@@ -133,6 +105,12 @@ if(isset($_POST['friendDecision'])) {
 						}
 						 echo "<p>".$result_row[4]."</p>";?>
 						 </a>
+						<form method="post" action="<?php echo "playlistviewbackend.php?playlistid=".$_GET['playlistid']."";?>">
+							<input type="hidden" name="videoid" value="<?php echo $result_row[0];?>">
+							<input type="submit" value="Remove from playlist" name="removeMedia"/>
+						</form>
+
+						</form>
 						</center>
 						</td>
 					<?php
