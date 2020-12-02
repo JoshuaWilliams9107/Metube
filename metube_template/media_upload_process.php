@@ -104,7 +104,7 @@ if(!file_exists($dirfile))
                     if(!empty($_FILES["thumbnail"]['name'])){
                         if(!file_exists($dirfile."/thumbnail"))
                             mkdir($dirfile."/thumbnail", 0744);
-                        $update = "UPDATE media SET thumbnailname='".urlencode($_FILES["thumbnail"]["name"])."' WHERE filename='".urlencode($_FILES["file"]["name"])."' AND filepath='".$dirfile."';";
+                        $update = "UPDATE media SET thumbnailname='".urlencode($_FILES["thumbnail"]["name"])."' WHERE filename='".$rand_file."' AND filepath='".$dirfile."';";
                         $queryresult = mysql_query($update)
                         or die("Update Thumbnail in Media error in media_upload_process.php " .mysql_error());;
                         if(is_uploaded_file($_FILES["thumbnail"]["tmp_name"])){
