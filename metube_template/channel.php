@@ -30,7 +30,7 @@ parse_str($_SERVER['QUERY_STRING'], $query_string);
 	<?php
 		if(isset($_GET['videoDelete']))
 			$message = "Video Deleted";
-		  if(isset($update_error))
+		  if(isset($message))
 		   {  echo "<div id='passwd_result'>".$message."</div><br>";}
 	?>
 		<div style="margin-left:200px;margin-right:200px;padding-top:50px;background-color:#E1E1E1;">
