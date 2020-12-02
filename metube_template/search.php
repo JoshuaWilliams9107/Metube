@@ -118,10 +118,10 @@ if(isset($_GET['keywords'])){
 					break;
 				}
 			}
+}
 			?>
 		    </tr>
 		    </table>
 		</center>
 		</div>
-
 </body>
