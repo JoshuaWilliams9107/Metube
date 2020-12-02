@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
 ?>
 	<center style="padding-top: 150px">
 	<p>Please create an account</p>
-	<p>Already have an account? <a href="/">Sign in</a></p>
+	<p>Already have an account? <a href="./index.php">Sign in</a></p>
 	<form method="post" action="<?php echo "signup.php"; ?>">
 		<input class="text"  type="text" name="firstName" placeholder="First Name"><br>
 		<input class="text"  type="text" name="lastName" placeholder="Last Name"><br>
