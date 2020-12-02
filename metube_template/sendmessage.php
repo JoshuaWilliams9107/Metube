@@ -31,7 +31,7 @@ if(isset($_POST['message'])) {
 <body style="padding:0;margin:0;">
 	<ul>
 	  <li><a id="floatleft" href="./home.php">Home</a></li>
-	  <li><a id="floatleft" href="./media.php">Browse Media</a></li>
+	  
       <li><a id="floatleft" href='media_upload.php'>Upload Media</a></li>
       <li><a id="floatleft" href='./favoriteview.php'>Favorite playlist</a></li>
 	  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>

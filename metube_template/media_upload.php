@@ -14,7 +14,7 @@ include_once "logincheck.php";
 <body>
 <ul>
     <li><a id="floatleft" href="./home.php">Home</a></li>
-    <li><a id="floatleft" href="./media.php">Browse Media</a></li>
+    
     <?php if($_SESSION['username'] != ""){?>
       <li><a id="floatleft" class="active" href='media_upload.php'>Upload Media</a></li>
       <li><a id="floatleft" href='./favoriteview.php'>Favorite playlist</a></li>
