@@ -34,11 +34,13 @@ if(isset($_POST['logout'])) {
 					<span style="display:inline-block;padding: 10px;margin:3px;">
 
 					<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;">Sender: <?php echo $messageRow[1] ?></span>
-					<br>
+					
 					<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;">Recipient: <?php echo $messageRow[2] ?></span>
 					<br>
 
 					<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;">Subject: <?php echo $messageRow[4] ?></span>
+					<br>
+					<span style="background-color: white;display:inline-block;padding: 3px;margin:3px; border: 1px solid black;">Date Sent: <?php echo $messageRow[5] ?></span>
 				</span>
    					<pre style="margin:0px;border: 1px solid black; background-color: white;"><span style="font-size:16px;font-family:Arial;"><?php echo $messageRow[3] ?></span></pre>
    					<br>

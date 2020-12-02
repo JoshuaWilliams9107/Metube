@@ -39,6 +39,7 @@ if(isset($_POST['deleteMessage'])){
 						<th style="border: 1px solid black;">Sender</th>
 						<th style="border: 1px solid black;">Recipient</th>
 						<th style="border: 1px solid black;">Subject</th>
+						<th style="border: 1px solid black;">Time Sent</th>
 						<th style="border: 1px solid black;">Delete</th>
 					</tr>
 				<?php
@@ -50,6 +51,7 @@ if(isset($_POST['deleteMessage'])){
 						<td style="border: 1px solid black;"><?php echo $messageRow[1] ?></td>
 						<td style="border: 1px solid black;"><?php echo $messageRow[2] ?></td>
 						<td style="border: 1px solid black;"><a href="/viewmessage.php?messageid=<?php echo $messageRow[0]?>"><?php echo $messageRow[4] ?></a></td>
+						<td style="border: 1px solid black;"><?php echo $messageRow[5] ?></td>
 						<td style="border: 1px solid black;">
 							<form style="padding:0px; margin:0px;" method="POST" action="./inbox.php">
 								<input type="hidden" name="messageid" value="<?php echo $messageRow[0]?>"/>

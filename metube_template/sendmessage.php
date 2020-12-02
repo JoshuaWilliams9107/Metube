@@ -23,7 +23,8 @@ if(isset($_POST['message'])) {
 		$error_message = "The recipient has not yet accepted your friend request.";
 	}else{
 		//send the message
-		mysql_query("INSERT INTO message (sender,recipient,message,subject) VALUES ('".$_SESSION['username']."','".santitize($_POST['recipient'])."','".santitize($_POST['message'])."','".$_POST['subject']."')");
+		$date = date('Y-m-d H:i:s');
+		mysql_query("INSERT INTO message (sender,recipient,message,subject,timestamp) VALUES ('".$_SESSION['username']."','".santitize($_POST['recipient'])."','".santitize($_POST['message'])."','".$_POST['subject']."','".$date."')");
 		$error_message = "Message Sent.";
 	}
 }

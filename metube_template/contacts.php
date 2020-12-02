@@ -96,8 +96,7 @@ if(isset($_POST['removeContact'])){
 		for($i = 0; $i < count($contacts); $i++){
 			if($contacts[$i][1] == $_SESSION['username']){
 				if($contacts[$i][3] == 0){
-					echo "<a href='/channel.php?username=".$contacts[$i][2]."' style='display:inline;'>".$contacts[$i][2]."</a>";
-					echo "<p style='display:inline;'> Request Pending</p><br>";
+					echo "<p>".$contacts[$i][2]." Request Pending</p>";
 				}else{
 					?>
 					<form style="padding:0px; margin:0px;" method="POST" action="./contacts.php">
