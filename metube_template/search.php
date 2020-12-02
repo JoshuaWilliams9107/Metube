@@ -56,12 +56,72 @@ if(isset($_GET['keywords'])){
    }
    
 ?>
+        <body style="padding:0;margin:0">
+            <ul>
+                <li><a id="floatleft" href="./home.php">Home</a></li>
+                <li><a id="floatleft" href="./media_upload.php">Upload Media</a></li>
+                <li><a id="floatleft" href="./favoriteview.php">Favorite playlist</a></li>
+	            <li><a id="floatleft" class="active" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
+	            <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
+	            <form action="<?php echo "home.php";?>" method="post">
+   			        <button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
+	            </form>
+	        </ul>
             <div class="result">
             <?php
              $media_Arr = array_values(array_unique($media_Arr, SORT_REGULAR));
-             for($i = 0; $i < count($media_Arr); $i++){?>
-                    <a href="#"><?php echo $media_Arr[$i]; ?></a><br>  
+            ?>
+            <center>
+            <table style="width:70%">
+            <tr>
+            <?php
+            $rowSize=3;
+            for($i = 0; $i < count($media_Arr); $i++){
+                $query = "SELECT * FROM media WHERE filename='".$media_Arr[$i]."';";
+                $result = mysql_query($query);
+                if(!$result){
+                    die("could not query the media table in the database: <br />".mysql_error())
+                }
+            ?>
+            <?php
+            if($result_row = mysql_fetch_row($result)){
+            ?>
+            <?php
+                if($i % $rowSize ==0){
+                ?>
+                </tr>
+                <tr>
             <?php } ?>
-            </div>
-<?php
-}
+            <td>
+                <center>
+                <a href="./media.php?id=<?php echo $result_row[0];?>">
+
+						<?php if(strpos($result_row[3],'image') !== false){?>
+							<img src="<?php echo $result_row[2].$result_row[1];?>"
+						 alt="thumbnail" width=250px height=150px/> <br>
+						<?php }else if(!is_null($result_row[9])){?>
+						<img src="<?php echo $result_row[2]."thumbnail/".$result_row[9]?>"
+						 alt="thumbnail" width=250px height=150px/> <br>
+
+						<?php }else{?>
+						<img src="uploads/metube/BlankVideo.png"
+						 alt="blank user image" width=250px height=150px/> <br>
+
+						<?php
+						}
+						 echo "<p>".$result_row[4]."</p>";?>
+						 </a>
+						</center>
+						</td>
+					<?php
+				}else{
+					break;
+				}
+			}
+			?>
+		    </tr>
+		    </table>
+		</center>
+		</div>
+
+</body>
