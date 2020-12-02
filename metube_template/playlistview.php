@@ -94,6 +94,7 @@ if(isset($_POST['friendDecision'])) {
 			if(mysql_num_rows($playlistquery) == 0){
 				echo "<p style='font-size:20px;'>This playlist has no media</p>";
 			}
+
 			for($i=0; $i<mysql_num_rows($playlistquery);$i++){
 				$playlistInfo = mysql_fetch_row($playlistquery);
 				$query = "SELECT * from media WHERE mediaid=".$playlistInfo[2].";"; 
@@ -104,11 +105,11 @@ if(isset($_POST['friendDecision'])) {
 				?>
 					
 				<?php
-
+				$rowSize = 3;
 				if($result_row = mysql_fetch_row($result)){
 					?>
 					<?php
-					 if($i % $rowSize == 0){ 
+					 if($i % $rowSize == 0 && $i != 0){ 
 						?>
 						</tr>
 						<tr>
@@ -135,8 +136,6 @@ if(isset($_POST['friendDecision'])) {
 						</center>
 						</td>
 					<?php
-				}else{
-					break;
 				}
 			}
 			?>

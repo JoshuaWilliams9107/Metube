@@ -9,29 +9,7 @@
 		$_SESSION['username'] = "";
 		header('Location: index.php');
 	}
-	if(isset($_POST['changeTitle'])) {
 
-		if($_POST['newTile'] != ""){
-			mysql_query("UPDATE media SET title='".$_POST['newTile']."' WHERE mediaid=".$_GET['id'].";");
-			
-		}else{
-			$update_error = "Title cannot be blank";
-		}
-		unset($_POST['changefirstname']);
-	}
-	if(isset($_POST['changeDescription'])) {
-		if($_POST['newDescription'] != ""){
-			mysql_query("UPDATE media SET description='".$_POST['newDescription']."' WHERE mediaid=".$_GET['id'].";");
-			
-		}else{
-			$update_error = "Description cannot be blank";
-		}
-		unset($_POST['changefirstname']);
-	}
-	if(isset($_POST['deleteVideo'])) {
-		
-		unset($_POST['deleteVideo']);
-	}
 	
 ?>	
 <html>
