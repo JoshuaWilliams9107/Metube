@@ -24,7 +24,8 @@ if(!file_exists($dirfile))
     { $result=$_FILES["file"]["error"];} //error from 1-4
     else
     {
-      $upfile = $dirfile.urlencode(time() . '_' . rand(100, 999) . '.' . end(explode(".", $_FILES["file"]["name"])));
+      $dirfile.urlencode($_FILES["file"]["name"]) =  $dirfile.urlencode(time() . '_' . rand(100, 999) . '.' . end(explode(".", $_FILES["file"]["name"]))); 
+      $upfile = $dirfile.urlencode($_FILES["file"]["name"]);
       
       if(file_exists($upfile))
       {
