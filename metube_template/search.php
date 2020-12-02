@@ -80,7 +80,7 @@ if(isset($_GET['keywords'])){
                 $query = "SELECT * FROM media WHERE filename='".$media_Arr[$i]."';";
                 $result = mysql_query($query);
                 if(!$result){
-                    die("could not query the media table in the database: <br />".mysql_error())
+                    die("could not query the media table in the database: <br />".mysql_error());
                 }
             ?>
             <?php
