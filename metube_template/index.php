@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
 ?>
 	<center style="padding-top: 150px">
 	<p>Welcome to Metube, Plase login</p>
-	<p>Don't have an account? <a href="/signup.php">Signup</a></p>
+	<p>Don't have an account? <a href="./signup.php">Signup</a></p>
 	<form method="post" action="<?php echo "index.php"; ?>">
 		<input class="text"  type="text" name="username" placeholder="Username"><br>
 		<input class="text"  type="password" name="password" placeHolder="Password"><br>
