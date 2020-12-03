@@ -30,7 +30,10 @@ include_once "logincheck.php";
   <p style="margin:0; padding:0">
   <input type="hidden" name="MAX_FILE_SIZE" value="1073741824" />
    Add a Media: <label style="color:#663399"><em> (Each file limit 1G)</em></label><br/>
-   <input  name="file" type="file" size="50" />
+   <input  name="file" type="file" size="50"accept="image/jpg, audio/mp3, video/mp4,image/jpeg,image/png" /><br>
+   <em>Video Files must be an mp4<em><br>
+   <em>Audio files must be an mp3</em><br>
+   <em>Image files must be a png or jpeg</em><br>
 
 <br>
 <br>
@@ -41,7 +44,8 @@ include_once "logincheck.php";
 <br>
 
 <label for "thumbnail">Thumbnail: <em> (Only needed when uploading non-image files)</em></label><br>
-<input type="file" id="thumbnail" name="thumbnail" size="50"><br>
+<input type="file" id="thumbnail" name="thumbnail" size="50" accept="image/jpg,image/jpeg,image/png"><br>
+<em>Image files must be a png or jpeg</em><br>
 
 <br>
 
