@@ -37,6 +37,7 @@
 		mysql_query("DELETE FROM playlist_to_media WHERE mediaid=".$_GET['id'].";");
 		mysql_query("DELETE FROM media_to_keywords WHERE media_id=".$_GET['id'].";");
 		mysql_query("DELETE FROM video_comment WHERE media_id=".$_GET['id'].";");
+		mysql_query("DELETE FROM download WHERE mediaid=".$_GET['id'].";");
 		header("Location: channel.php?username=".$_SESSION['username']."&videoDelete=true");
 	}
 ?>	
