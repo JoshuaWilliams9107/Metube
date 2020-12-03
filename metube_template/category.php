@@ -10,7 +10,7 @@ $categoryquery = mysql_query("SELECT * FROM media WHERE category = '".$_GET['cat
 ?>
 <body style="padding:0;margin:0;">
     <ul>
-        <li><a id="floatleft" href="./home.php">Home</a></li>
+        <li><a id="floatleft" class="active" href="./home.php">Home</a></li>
         <li><a id="floatleft" href="./media_upload.php">Upload Media</a></li>
         <li><a id="floatleft" href="./favoriteview.php">Favorite Playlist</a></li>
         <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
