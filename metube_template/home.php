@@ -51,7 +51,7 @@ if(isset($_POST['lastpage'])) {
 	  <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
 	  <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
 	  <?php }?>
-	  <form action="<?php echo "home.php";?>" method="post">
+	  <form action="<?php echo "./home.php";?>" method="post">
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
 	  </form>
 	</ul>
@@ -129,7 +129,7 @@ if(isset($_POST['lastpage'])) {
 				 <?php
 				 $uploaderquery = mysql_query("SELECT * FROM upload WHERE mediaid=".$result_row[0].";");
 				 $uploaderinformation = mysql_fetch_row($uploaderquery);
-				 echo "<a style='font-size:10px;' href='/channel.php?username=".$uploaderinformation[1]."'>".$uploaderinformation[1]."</p>";
+				 echo "<a style='font-size:10px;' href='./channel.php?username=".$uploaderinformation[1]."'>".$uploaderinformation[1]."</p>";
 				 ?>
 				</center>
 				</td>
