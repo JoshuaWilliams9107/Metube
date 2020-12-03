@@ -34,18 +34,23 @@
 	}
 	if(isset($_POST['download'])){
 		$date = date('Y-m-d H:i:s');
-		echo "INSERT INTO download (username,mediaid,downloadtime) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".$date."')";
+
 		$result = mysql_query("INSERT INTO download (username,mediaid,downloadtime) VALUES ('".$_SESSION['username']."',".$_GET['id'].",'".$date."')");
-		echo "SELECT * FROM download WHERE username='".$_SESSION['username']."' AND mediaid=".$_GET['id']." AND downloadtime='".$date."');";
+
 		$selectresultID = mysql_fetch_row(mysql_query("SELECT * FROM download WHERE username='".$_SESSION['username']."' AND mediaid=".$_GET['id']." AND downloadtime='".$date."';"));
-		echo "INSERT INTO download_to_media (downloadid,media_id) VALUES (".$selectresultID[0].",".$_GET['id'].")";
+		
 		$resultrelational = mysql_query("INSERT INTO download_to_media (downloadid,media_id) VALUES (".$selectresultID[0].",".$_GET['id'].")");
 		if (!$result || !$resultrelational)
 			{
 	  			die ("Download failed. Could not query the database: <br />". mysql_error());
 			}
-		header("Location: ".$_POST['fileURL']."");
-		
+		header("Content-type: ".$_POST['fileType']."");
+		header('Content-Disposition: attachment; filename= '.$_POST['fileName'].'');
+		while (ob_get_level()) {
+    		ob_end_clean();
+		}
+		readfile($_POST['fileURL']);
+
 	}
 
 ?>	
@@ -136,7 +141,9 @@ $vid_title = mysql_fetch_assoc($result);
 <b>Title</b>: <?php echo $vid_title['title'];  ?>  
 <br>
 <form method="post" action="<?php echo "media.php?id=".$_GET['id'].""; ?>">
+	<input type="hidden" value="<?php echo $result_row[3];?>" name="fileType"/>
 	<input type="hidden" value="<?php echo $result_row[2].$result_row[1];?>" name="fileURL"/>
+	<input type="hidden" value="<?php echo $result_row[1];?>" name="fileName"/>
 	<input type="submit" name="download" value="Download"/>
 </form>
 <?php 
