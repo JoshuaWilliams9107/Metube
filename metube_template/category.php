@@ -5,6 +5,7 @@ session_start();
 
 include_once "function.php";
 
+$categoryquery = mysql_query("SELECT * FROM media WHERE category = '".$_GET['category']."';");
 
 ?>
 <body style="padding:0;margin:0;">
@@ -21,7 +22,7 @@ include_once "function.php";
     
     <div class="result">
     <?php
-    $media_Arr = array_values(array_unique($media_Arr, SORT_REGULAR));
+    $media_Arr = array_values(array_unique($categoryquery, SORT_REGULAR));
     ?>
     <center>
     <div>
@@ -56,8 +57,6 @@ include_once "function.php";
     <tr>
     <?php
     $rowSize=3;
-
-    $categoryquery = mysql_query("SELECT * FROM media WHERE category = '".$_GET['category']."';");
 
     if(mysql_num_rows($categoryquery) == 0){
         echo "<p style='font-size:20px;'>No videos for this category</p>";
