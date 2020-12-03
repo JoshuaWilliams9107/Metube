@@ -2,8 +2,7 @@
 <?php
 	session_start();
 	include_once "function.php";
-	include_once "logincheck.php";
-
+	
 
 	if(isset($_POST['addtoplaylist'])) {
 		//add media to database

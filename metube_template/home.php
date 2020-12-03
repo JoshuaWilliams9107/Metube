@@ -4,7 +4,7 @@
 session_start();
 
 include_once "function.php";
-include_once "logincheck.php";
+
 parse_str($_SERVER['QUERY_STRING'], $query_string);
 if(!isset($query_string['page'])){
 	header('Location: home.php?page=0');

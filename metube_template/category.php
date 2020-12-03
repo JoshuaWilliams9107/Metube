@@ -4,7 +4,7 @@
 session_start();
 
 include_once "function.php";
-include_once "logincheck.php";
+
 
 ?>
 <body style="padding:0;margin:0;">

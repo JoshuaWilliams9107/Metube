@@ -35,6 +35,7 @@ if(isset($_POST['submit'])) {
 		<input name="submit" type="submit" value="Login"><br>
 		<input name="reset" type="reset" value="Reset"><br>
 	</form>
+	<p>Or? <a href="./home.php">Use the website without logging in</a></p>
 	</center>
 
 <?php
@@ -42,6 +43,6 @@ if(isset($_POST['submit'])) {
    {  echo "<div id='passwd_result'>".$login_error."</div>";}
   parse_str($_SERVER['QUERY_STRING'], $query_string);
   if(isset($query_string['mustlogin'])){
-	echo "<div id='passwd_result'>You must login to use the website</div>";
+	echo "<div id='passwd_result'>You must login to use this feature</div>";
   }
 ?>
