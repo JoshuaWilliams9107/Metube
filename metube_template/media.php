@@ -193,12 +193,13 @@ $result = mysql_query($description);
 $vid_desc = mysql_fetch_assoc($result);
 ?>
 <p><b>Description</b>: <?php echo $vid_desc['description']; ?></p>    
-
+<?php if($_SESSION['username'] != ""){ ?>
 <form method="post" action="media.php?id=<?php echo $_GET['id'];?>">
     <label for="comment">Comment:</label><br>
     <textarea type="text" rows="6" cols="50" id="comment" name="comment" placeholder="Enter comment here..."></textarea>
     <input value="submit" name="submitcomment" type="submit"/>
 </form>
+<?php } ?>
 <p>All Comments</p>
 <?php 
 $commentSelect = mysql_query("SELECT * FROM video_comment WHERE media_id=".$_GET['id']."");
