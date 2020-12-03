@@ -46,11 +46,11 @@
 			}
 		header("Content-type: ".$_POST['fileType']."");
 		header('Content-Disposition: attachment; filename= '.$_POST['fileName'].'');
+		//clearing the output buffer to prevent file corruption
 		while (ob_get_level()) {
     		ob_end_clean();
 		}
 		readfile($_POST['fileURL']);
-
 	}
 
 ?>	

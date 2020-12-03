@@ -25,6 +25,7 @@ include_once "logincheck.php";
         <button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
     </form>
   </ul>
+<center>
 <form method="post" action="media_upload_process.php" enctype="multipart/form-data" >
  
   <p style="margin:0; padding:0">
@@ -51,7 +52,7 @@ include_once "logincheck.php";
 
 <label for="description">Description:</label><br>
 <textarea type="text" id="description" name="description"></textarea>
-
+<br>
 <label for="category" method="post">Choose a category:</label>
   <select id="category" name="category">
     <option value="Sports" selected>Sports</option>
@@ -76,6 +77,6 @@ include_once "logincheck.php";
  
                 
  </form>
-
+</center>
 </body>
 </html>
