@@ -148,10 +148,16 @@ $vid_title = mysql_fetch_assoc($result);
 </form>
 <?php 
 $timesdownload = mysql_query("SELECT * FROM download WHERE mediaid=".$_GET['id'].";");
+
 $timesdownloadusername = mysql_query("SELECT * FROM download WHERE mediaid=".$_GET['id']." AND username='".$_SESSION['username']."';");
 ?>
 <p>Total Times Downloaded: <?php echo mysql_num_rows($timesdownload)?></p>
+<?php if($_SESSION['username'] != ""){ ?>
 <p>Total Times <?php echo $_SESSION['username']?> Downloaded: <?php echo mysql_num_rows($timesdownloadusername)?></p>
+<?php }else{ ?>
+
+<p>Total Times Not Logged in Users Downloaded: <?php echo mysql_num_rows($timesdownloadusername)?></p>
+<?php } ?>
 <?php 
 $playlistResult = mysql_query("SELECT * FROM playlist WHERE username='".$_SESSION['username']."';");
 if(mysql_num_rows($playlistResult) != 0){
