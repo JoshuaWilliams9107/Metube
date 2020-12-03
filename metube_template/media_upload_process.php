@@ -129,4 +129,4 @@ if(!file_exists($dirfile))
     //You can process the error code of the $result here.
 ?>
 
-<!--<meta http-equiv="refresh" content="0;url=home.php?result=<?php echo $result;?>">-->
+<meta http-equiv="refresh" content="0;url=home.php?result=<?php echo $result;?>">
