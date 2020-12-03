@@ -21,9 +21,6 @@ $categoryquery = mysql_query("SELECT * FROM media WHERE category = '".$_GET['cat
     </ul>
     
     <div class="result">
-    <?php
-    $media_Arr = array_values(array_unique($categoryquery, SORT_REGULAR));
-    ?>
     <center>
     <div>
         <form action="search.php" method="get">
