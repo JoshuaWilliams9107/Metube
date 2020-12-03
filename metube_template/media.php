@@ -76,7 +76,11 @@
 	  <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
 	  <?php }?>
 	  <form action="<?php echo "home.php";?>" method="post">
+   			<?php if($_SESSION['username'] != ""){?>
    			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
+   		<?php }else{?>
+			<button id="logout" type="submit" name="logout" value="true" class="btn-link">Login</button>
+   <?php 	}?>
 	  </form>
 </ul>
 <?php

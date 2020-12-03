@@ -65,7 +65,11 @@ if(isset($_GET['keywords'])){
 	            <li><a id="floatleft" href="./channel.php?username=<?php echo $_SESSION['username']?>">My Channel</a></li>
 	            <li><a id="floatleft" href='./inbox.php'>Inbox</a></li>
 	            <form action="<?php echo "home.php";?>" method="post">
-   			        <button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
+   			        <?php if($_SESSION['username'] != ""){?>
+                    <button id="logout" type="submit" name="logout" value="true" class="btn-link">Logout</button>
+                <?php }else{?>
+                    <button id="logout" type="submit" name="logout" value="true" class="btn-link">Login</button>
+           <?php    }?>
 	            </form>
 	        </ul>
 
