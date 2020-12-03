@@ -77,6 +77,14 @@ if(isset($_GET['id'])) {
 	if(substr($type,0,5)=="image") //view image
 	{
 		echo "<center><br><img src='".$filepath.$filename."'/></center>";
+	}else if(substr($type,0,5)=="audio") //view image
+	{
+		?>
+		<audio controls>
+			<source src="<?php echo $filepath.$filename?>" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</audio>
+		<?php
 	}
 	else //view movie
 	{	

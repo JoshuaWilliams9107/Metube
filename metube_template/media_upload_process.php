@@ -10,12 +10,13 @@ include_once "logincheck.php";
 
 $username=$_SESSION['username'];
 
-
+echo $_FILES["file"]["error"];
 //Create Directory if doesn't exist
 if(!file_exists('uploads/'))
     mkdir('uploads/', 0744);
 $dirfile = 'uploads/'.$username.'/';
 chmod($dirfile, 0755);
+
 if(!file_exists($dirfile))
     mkdir($dirfile, 0744);
 
@@ -128,4 +129,4 @@ if(!file_exists($dirfile))
     //You can process the error code of the $result here.
 ?>
 
-<meta http-equiv="refresh" content="0;url=home.php?result=<?php echo $result;?>">
+<!--<meta http-equiv="refresh" content="0;url=home.php?result=<?php echo $result;?>">-->
