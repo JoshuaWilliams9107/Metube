@@ -26,7 +26,7 @@ $categoryquery = mysql_query("SELECT * FROM media WHERE category = '".$_GET['cat
         <form action="search.php" method="get">
         <label>
             Search
-            <input type="text" name="keywords" autocomplete="off" value="<?php echo $_GET['keywords'];?>">
+            <input type="text" name="keywords" autocomplete="off" value="<?php if(isset($_GET['keywords']))echo $_GET['keywords'];?>">
             </label>
             <input type="submit" value="Search">
         </form>
