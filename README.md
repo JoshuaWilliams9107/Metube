@@ -33,11 +33,11 @@ This was a team semester-long project that Kaleb Chestnut and I worked on for Da
 * Media Thumbnails
 
 ## - Installation -
-###Linux
+### Linux
 * Import database structure into MySQL instance (structure located in the database schema folder)
 * Install apache and copy files from metube_template into /var/www/html
 * Start up apache
-###Windows
+### Windows
 * Install an apache like hosting solution, we used [XAMPP](https://www.apachefriends.org/index.html)
 * Import database structure into MySQL instance(structure located in the database schema folder)
 * Install files located in metube_template into the appropriate folder
