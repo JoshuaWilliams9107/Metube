@@ -2,7 +2,7 @@
 A website where users can share and view media while communicating in various ways with the community.
 
 ## - About the Project -
-This was a team semester-long project that Kaleb Chestnut and I worked on for Database Management Systems.  Trello was used for task management and the project requirements were specified by the project requirements document given by the professor.  When problems were encountered clear and open communication of the issue was used to resolve them.  This project employs the use of a frontend, backend, and MySQL database to allow for responsive and dynamic content and media sharing.
+This was a team semester-long project that Kaleb Chestnut and I (Joshua Williams) worked on for Database Management Systems.  Trello was used for task management and the project requirements were specified by the project requirements document given by the professor.  When problems were encountered clear and open communication of the issue was used to resolve them.  This project employs the use of a frontend, backend, and MySQL database to allow for responsive and dynamic content and media sharing.
 
 ## - Built With -
 
